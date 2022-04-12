@@ -1,0 +1,104 @@
+// @import "~swiper/swiper";
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+::ng-deep {
+    root {
+      --swiper-theme-color: #ec0000 !important;
+    }
+  
+    .swiper-wrapper {
+      height: 100% !important;
+     // margin: 2.5rem 0;
+    }
+  
+    .swiper-slide {
+      height: 100% !important;
+      width: 100% !important;
+    }
+  
+  }
+
+.title-welcome {
+    p:nth-child(1) {
+        color: #45B39D;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    p:nth-child(2) {
+        color: #FFFFFF;
+        font-size: 32px;
+    }
+}
+
+
+
+.home {
+    width: 70%;
+  }
+  
+  img {
+    width: 60%;
+    margin: 1.5rem;
+  }
+  
+  .container-dialog {
+    margin: 1.5rem;
+  }
+  
+  .dialog {
+  
+    p:nth-child(1) {
+      font-size: 20px;
+      color: #444;
+      text-align: center;
+    }
+    p:nth-child(2) {
+      font-size: 16px;
+      color: #FFFFFF;
+      padding:0 2px;
+      text-align: center;
+    }
+    p:nth-child(3) {
+      font-size: 16px;
+      color: #FFFFFF;
+      padding:0 2px;
+      text-align: center;
+  }
+
+
+
+  }
+  
+  .mobile {
+    .home {
+      width: 100%;
+      margin-top: 18%;
+    }
+  
+    img {
+      width: 60%;
+    }
+  
+    .spacing {
+      margin: 30% 12%;
+    }
+    .dialog {
+        font-size: 1.2px!important;
+    }
+  }
+  
+  .tablet {
+    .home {
+      width: 100%;
+    }
+  }
+  
+  .spacing {
+    margin: 3%;
+  }
+  
+  .dialog {
+    margin: 1.5rem;
+  }
+  

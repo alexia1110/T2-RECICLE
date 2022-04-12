@@ -1,0 +1,103 @@
+<div class="grid" gdColumns="repeat(12, 1fr)" gdColumns.sm="repeat(8, 1fr)" gdColumns.xs="repeat(4, 1fr)"
+  gdGap="0 1.6rem" ngClass.xs="mobile" ngClass.sm="tablet" ngClass.md="laptop" ngClass.gt-md="desktop">
+
+  <div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
+    <div fxLayout="row" class="head-title" fxLayoutAlign="center center">
+      <p>Onboarding</p>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="card onboarding" fxLayout="column">
+        <p class="subtitle"> ¡Cada vez más cerca de ser Parte de la comunidad EcoQR!
+          Ayúdanos a conocerte un poco más</p>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>Nombres</mat-label>
+            <input matInput />
+            <!-- <em fxFlexOffset="5px" fxFlex="24" fxLayoutAlign="end center" class="icon-SYS004 blue"
+              (click)="showModalCI()"></em> -->
+            <mat-error>
+              El campo se encuentra vacío
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>Primer Apellido</mat-label>
+            <input matInput />
+            <mat-error> Debes ingresar un celular válido </mat-error>
+          </mat-form-field>
+
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>Segundo Apellido</mat-label>
+            <input matInput />
+            <mat-error> Debes ingresar un celular válido </mat-error>
+          </mat-form-field>
+          <div fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px" class="margin">
+            <p  class="white-text" fxLayoutAlign="center center">Genero</p>
+            <mat-radio-group name="checkDP" fxFlex="grow" fxLayout="row wrap" fxLayout.xs="row" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center center">
+            <mat-radio-button class="white-text" value="F" class="check" fxFlex.xs="40">Femenino</mat-radio-button>
+            <mat-radio-button class="white-text" value="M" class="check" fxFlex.xs="40">Masculino</mat-radio-button>
+            <mat-radio-button class="white-text" value="O" class="check" fxFlex.xs="20">Otro</mat-radio-button>
+          </mat-radio-group>
+          </div> 
+    
+          <!-- <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>Genero</mat-label>
+            <input matInput />
+            <mat-error> Debes ingresar un celular válido </mat-error>
+          </mat-form-field> -->
+        </div>
+        <p class="subtitle">Ahora necesitamos tú dirección</p>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>Calle</mat-label>
+            <input matInput />
+            <mat-error> Debes ingresar un celular válido </mat-error>
+          </mat-form-field>
+          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>Número</mat-label>
+            <input matInput />
+            <mat-error> Debes ingresar un celular válido </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>Región</mat-label>
+                  <mat-select (ngModelChange)="getRegionPerson($event)">
+                    <mat-option *ngFor="let region of regions.regiones" [value]="region">
+                      {{region.region}}
+                    </mat-option>
+                  </mat-select>
+          </mat-form-field>
+          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>Comuna</mat-label>
+                  <mat-select >
+                    <mat-option *ngFor="let comuna of communesPerson;" [value]="comuna">
+                      {{ comuna.nombreComuna }}</mat-option>
+                  </mat-select>
+          </mat-form-field>
+        </div>
+        <p class="subtitle">Crea una clave para tu inicio de sesión</p>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>contraseña</mat-label>
+            <input matInput />
+            <mat-error> Debes ingresar un celular válido </mat-error>
+          </mat-form-field>
+          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+            <mat-label>Confirma contraseña</mat-label>
+            <input matInput />
+            <mat-error> Debes ingresar un celular válido </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+    <div fxLayout="row" class="spacing" fxLayoutAlign="center center">
+
+      <button mat-button class="btn btn-primary" type="submit" fxFlex.xs="80">
+        INGRESAR
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,475 @@
+/* You can add global styles to this file, and also import other style files */
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body{
+    background-color: #003153;
+    margin: 0 !important;
+}
+
+// .cdk-global-overlay-wrapper {
+//     display: flex;
+//     // position: absolute;
+//     overflow: auto !important;
+//     pointer-events: auto !important;
+  
+//   }
+
+
+
+.cdk-global-overlay-wrapper {
+  display: flex;
+  // position: absolute;
+  overflow: auto !important;
+  pointer-events: auto !important;
+
+}
+
+input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disabled::placeholder {
+  -webkit-text-fill-color: #ccc; /* 1. sets text fill to current `color` for safari */
+  opacity: 1; /* 2. correct opacity on iOS */
+}
+
+// .mat-form-field.mat-form-field-disabled .mat-form-field-infix > *{
+//   color: #cccccc !important;
+// }
+
+.leter {
+  font-size: 1.6rem !important;
+  font-family: 'Santander Micro Text';
+}
+
+.blue {
+  font-size: 2.3rem;
+  color: #137e84;
+  place-items: center;
+  text-align: center;
+}
+
+.pointer {
+  cursor: auto;
+  cursor: pointer;
+  margin: 0rem 0 1rem;
+}
+
+
+.content-buttom {
+  padding: 1.6rem;
+  // border-top: 1px solid #979797;
+  border-top: solid 1px #dddddd;
+
+  em {
+    place-items: center;
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+.stepper-custom {
+  padding: 0px 2.5rem 0px 2.5rem !important;
+
+  &.mobile {
+    padding: 0px 6px !important;
+  }
+}
+
+.btn.btn-secondary {
+  border-radius: 100rem;
+  background-color: #fffffe !important;
+  border: 1px solid #ec0000;
+  color: #ec0000;
+  width: 100%;
+
+  span {
+    font-weight: normal;
+  }
+
+  .btn-secondary:focus {
+    background-color: #ec0000;
+  }
+
+  & .mat-button-focus-overlay,
+  .mat-stroked-button:hover .mat-button-focus-overlay {
+    background-color: #767676;
+    border-color: #767676 0px;
+  }
+
+  &:hover {
+    border: 1px solid #ec0000;
+
+    & .mat-button-focus-overlay,
+    .mat-stroked-button:hover .mat-button-focus-overlay {
+      opacity: .04;
+    }
+  }
+}
+
+.mat-button[disabled] {
+  border: 1px solid #cccccc;
+  color: #767676;
+  // background-color: transparent;
+}
+
+.btn.btn-primary {
+  width: 30rem;
+}
+
+// .marginCard{
+//     margin: 1.5rem 4rem;
+
+// }
+
+// .mobile{
+//   .marginCard{
+//     margin: none;
+
+// }
+// }
+
+.card {
+//   box-shadow: $raised;
+  border-radius: 1.2rem;
+  // border-radius: 0.5rem;
+  background-color: rgba(141, 189, 189, 0.667);
+
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 5%;
+  width: 70%;
+
+  &.mobile {
+    margin:4% !important;
+    padding: 0;
+    margin-bottom: 3.8rem;
+
+  }
+}
+.mobile{
+  .card {
+    margin:4% !important;
+    padding: 0;
+    width: 100% !important;
+  }
+}
+
+
+.datos-falt {
+  background-color: #DEEDF2;
+  p {
+    color: #6a6a6a;
+    font-family: "Santander Micro Text";
+    font-size: 1.6rem;
+    padding: 1rem;
+    padding-left: 0.5rem;
+  }
+  em {
+    font-size: 2.4rem;
+    color: #137e84;
+    text-align: center;
+  }
+}
+
+
+
+
+.mobile {
+  .card {
+    margin-top: 20%;
+  }
+
+  .head-title-2 {
+    p {
+      text-align: center;
+      font-size: 1.6rem !important;
+      margin: 1.6rem;
+    }
+
+  }
+}
+
+
+
+.head-title {
+  font-size: 3.2rem;
+  color: #FFFFFF;
+  text-align: center;
+  font-style: italic;
+  padding: 0.5rem 2rem 0rem 2rem;
+  margin-top: 6.5%;
+  font-weight: 400;
+
+  &.mobile {
+    margin-top: 5.0rem;
+  }
+
+  &.mobile {
+    padding: 0 1.2rem;
+    font-size: 1.6rem;
+  }
+
+  &.title-lighter {
+    font-weight: 600;
+  }
+
+}
+
+.tablet {
+  .head-title {
+    font-size: 2.2rem;
+  }
+}
+
+.head-title-2 {
+  p {
+    font-size: 1.6rem !important;
+    margin: 1.0rem;
+    text-align: center;
+    font-weight: 600;
+    font-style: italic;
+    font-family: 'Santander Micro Text';
+  }
+}
+
+.icons-fotter {
+  color: #ffffff;
+  margin-bottom: 1.8rem;
+  margin-top: -1.0rem;
+
+  em {
+    place-items: center;
+    margin: 0 18%;
+  }
+
+  em:nth-child(1) {
+    place-items: center;
+    font-size: 4.5rem;
+  }
+
+  em:nth-child(2) {
+    place-items: center;
+    text-align: center;
+    font-size: 3.5rem;
+  }
+
+}
+
+.mat-form-field {
+  margin-bottom: 5px;
+}
+
+.mat-error {
+  margin-left: 1rem;
+}
+
+.mat-dialog-title {
+  margin: 0 !important;
+}
+
+.mat-select-panel {
+  max-height: 220px !important;
+}
+
+.mat-select-panel-wrap {
+  flex-basis: 100%;
+  position: absolute !important;
+  text-align: center;
+}
+
+.mat-select-panel-wrap .mat-select-panel .mat-option.mat-selected {
+  // color: #ffffff;
+  background: #69f0ae;
+}
+
+.mat-select-panel {
+  margin: 0 2.2rem !important;
+  min-width: 90% !important;
+}
+
+.mat-tooltip {
+  /* your own custom styles here */
+  /* e.g. */
+  background-color: #e8f8f9 !important;
+  color: #444444 !important;
+  padding: 1.0rem !important;
+  border: solid 1px #32bbc3 !important;
+}
+
+// .mobile {
+
+// }
+
+.mat-dialog-container {
+  padding: 0 !important;
+  border-radius: 8px !important;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+.mat-expansion-panel-header {
+  height: 7.5rem !important;
+  padding: 0 15px !important;
+}
+
+.mat-expansion-indicator::after {
+  color: #69f0ae !important;
+}
+.mobile{
+  .mat-form-field {
+    width: 100% !important;
+    color: #69f0ae !important;
+}
+}
+
+.mat-input-element {
+  caret-color: #69f0ae !important;
+}
+  .mat-focused .mat-form-field-label {
+    color: #69f0ae !important;
+  }
+  .mat-expansion-indicator::after {
+    color: #69f0ae !important;
+  }
+  .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+    background-color: #69f0ae !important;
+  }
+
+  .mat-radio-label-content {
+
+    color: rgba(255,255,255,.7);
+}
+
+::ng-deep {
+
+
+  // .mat-focused .mat-form-field-label {
+  //   color: #69f0ae;
+  // }
+
+  .mat-input-element {
+    caret-color: #69f0ae !important;
+}
+
+  .body-modal .body-modal-text {
+    margin: 1rem 2.5rem 3rem 2.5rem!important;
+  }
+  .footer {
+    position: absolute !important;
+    margin-top: 10%;
+  }
+}
+
+// .cdk-overlay-pane {
+//   left: 94.5px;
+// }
+
+.container-step {
+  box-shadow: none !important;
+}
+
+.sutitle-form {
+  font-size: 1.6rem;
+  color: #444444;
+  padding: 0px 2.5rem 0px 2.5rem;
+  font-weight: bold;
+
+  &.mobile {
+    padding: 0px 6px;
+  }
+}
+
+// .cdk-overlay-pane {
+//   left: 94.5px;
+// }
+.container-borde-paso {
+  z-index: 0 !important;
+}
+
+.mobile button.mat-button-base,
+.mobile button.mat-stroked-button {
+  height: 3.5rem;
+}
+
+lib-step {
+  box-shadow: 0 2px 4px 0 rgba(145, 144, 144, 0.34);
+  margin-top: 1.5rem;
+}
+
+
+@media screen and (max-width: 1024px) {
+  body {
+    background-position: right center;
+  }
+}
+
+
+.btn.btn-primary {
+    border-radius: 100px;
+    background-color: #45B39D !important;
+    border: 1px solid #45B39D;
+    color: #003153;
+    width: 100%;
+
+    span {
+      font-weight: normal;
+      font-size: 16px;
+    }
+
+    .btn-primary:focus {
+      background-color: #45B39D;
+    }
+  }
+
+  .btn.btn-secondary {
+    border-radius: 100px;
+    background-color: #ffffff !important;
+    border: 1px solid #ffffff;
+    color: #45B39D;
+    width: 100%;
+
+    span {
+      font-weight: normal;
+      font-size: 16px;
+    }
+
+    .btn-secondary:focus {
+      background-color: #ffffff;
+    }
+  }
+
+  .btn-primary {
+    width: 35% !important;
+  }
+
+  .btn-secondary{
+    width: 35% !important;
+  }
+
+  .mobile{
+    .btn.btn-primary  {
+        margin: 5px 0;
+        width: 100%!important;
+    
+      }
+      .btn.btn-secondary{
+        margin: 5px 0;
+        width: 100% !important;
+    }  
+      
+  }
+
+  .head-title {
+    p:nth-child(1) {
+        color: #45B39D;
+        font-size: 28px;
+        font-weight: bold;
+    }
+  }
+
+  .subtitle {
+    font-size: 18px;
+    padding: 1px;
+    text-align: center;
+    color: #003153;
+  }
