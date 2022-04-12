@@ -13,10 +13,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DashboardRoutingModule } from './dashboard-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { DashboardComponent } from './dashboard.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { StepRecycleComponent } from './reciclar/step-recycle/stepRecycle.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { ScanRecycleComponent } from './reciclar/scan-recycle/scan.component';
 
 
 
@@ -24,7 +27,10 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    StepRecycleComponent,
+    ScanRecycleComponent
+
   ],
   imports: [
     FlexLayoutModule,
@@ -34,6 +40,7 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
     MatInputModule,
     MatIconModule,
     // CoreModule,
+    MatStepperModule,
     MatSidenavModule,
     MatButtonModule,
     FormsModule,

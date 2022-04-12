@@ -1,0 +1,33 @@
+
+
+::ng-deep {
+    .mat-stepper-horizontal, .mat-stepper-vertical {
+        background-color: #003153 !important;
+    }
+    .mat-horizontal-stepper-header{
+        pointer-events: none !important;
+    }
+    
+    .mat-horizontal-stepper-header {
+    
+        height: 72px !important;
+      
+        padding: 0 10px !important;
+        font-size: 18px;
+    }
+}
+
+.container-intro {
+    margin: 10px;
+    text-align: center;
+    p:nth-child(1) {
+        color: #45B39D;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    p:nth-child(2) {
+        color: #45B39D;
+        font-size: 14px;
+    }
+}

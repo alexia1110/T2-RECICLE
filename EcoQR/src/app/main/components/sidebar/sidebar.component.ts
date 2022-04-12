@@ -49,6 +49,11 @@ public setActive(item: string) {
   if (item !== this.active) {
     this.activeMenu = item;
     this.navClick.emit(item);
+    this.optionsDropdownActive = false;
+
+      this.router.navigate([item])
+    
+  
   }
 }
 

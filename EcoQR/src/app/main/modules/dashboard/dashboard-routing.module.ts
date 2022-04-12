@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { ScanRecycleComponent } from './reciclar/scan-recycle/scan.component';
+import { StepRecycleComponent } from './reciclar/step-recycle/stepRecycle.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    //  canActivate: [PlatformGuard],
-    //  canActivateChild: [PlatformGuard],
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '',
-        component: DashboardComponent
-
+  { path: 'init', component: DashboardComponent,
+      children: [
+          { path: 'reciclar', component: StepRecycleComponent },
+          {path: 'scan', component: ScanRecycleComponent}
+          // {path: 'face-autenticacion', component: LivenessTocComponent },
+          // { path: 'ftu-pyme', component: FtuComponent },
+          // { path: 'gif-pyme', component: GifComponent }
+        ]
       },
      
  //     { path: 'reciclar',  component: DashboardComponent},
@@ -34,8 +33,8 @@ const routes: Routes = [
       // { path: 'oferta-pyme', component: PlanDocumentComponent },
       // { path: 'documento-pyme', component: ContractComponent },
       // { path: 'preguntas', component: PreguntasEquifaxComponent }
-    ]
-  },
+    
+
 ];
 
 @NgModule({

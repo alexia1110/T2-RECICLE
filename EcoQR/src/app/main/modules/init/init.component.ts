@@ -60,7 +60,7 @@ export class initComponent {
   }
 
   goLogin(){
-    this.router.navigate(['/main/dashboard']);
+    this.router.navigate(['/main/dashboard/init']);
   }
 
   showLogin(){
