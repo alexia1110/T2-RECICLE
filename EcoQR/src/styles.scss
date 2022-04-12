@@ -6,6 +6,9 @@ body{
     background-color: #003153;
     margin: 0 !important;
 }
+.mat-horizontal-content-container {
+  padding: 0 !important;
+}
 
 // .cdk-global-overlay-wrapper {
 //     display: flex;
@@ -340,12 +343,19 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
     color: rgba(255,255,255,.7);
 }
 
+.mat-typography p {
+  margin: 0;
+}
+
+.mat-step-header .mat-step-icon-selected {
+background-color: #137e84;
+}
+
+.mat-step-header .mat-step-icon-state-done{
+  background-color: #137e84;
+}
 ::ng-deep {
 
-
-  // .mat-focused .mat-form-field-label {
-  //   color: #69f0ae;
-  // }
 
   .mat-input-element {
     caret-color: #69f0ae !important;
@@ -456,10 +466,17 @@ lib-step {
         margin: 5px 0;
         width: 100% !important;
     }  
+    .head-title {
+      margin-top: 8% !important;
+    
+      margin-bottom: 10%!important;
+    }  
       
   }
 
   .head-title {
+    margin-top: 6%;
+    margin-bottom: 5%;
     p:nth-child(1) {
         color: #45B39D;
         font-size: 28px;
@@ -473,3 +490,8 @@ lib-step {
     text-align: center;
     color: #003153;
   }
+
+  .spacing {
+    margin: 10%;
+  }
+  

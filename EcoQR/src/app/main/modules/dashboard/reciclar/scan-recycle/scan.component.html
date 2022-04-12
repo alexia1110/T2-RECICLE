@@ -4,13 +4,13 @@
         <div fxLayout="column" fxLayoutAlign="center center">
             <div  fxLayout="row" >
                 <mat-stepper linear #stepper [selectedIndex]="1"  >
-                    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable" completed="true">
+                    <mat-step  [editable]="isEditable" completed="true">
         
                         <ng-template matStepLabel> Introducción
                         </ng-template>
                         
                     </mat-step>
-                    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+                    <mat-step [editable]="isEditable">
                         <ng-template matStepLabel> Scaneo
                         </ng-template>
                     </mat-step>
@@ -27,5 +27,10 @@
                 <p>Escanea</p>
           </div>
 
+       
+          </div>
+          <div fxLayout="row"fxLayoutAlign="center center">
+            <zxing-scanner *ngIf="scannerEnabled" #scanner (scanSuccess)="scanSuccessHandler($event)">
+            </zxing-scanner>
           </div>
     </div>

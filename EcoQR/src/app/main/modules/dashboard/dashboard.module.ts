@@ -20,6 +20,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { StepRecycleComponent } from './reciclar/step-recycle/stepRecycle.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ScanRecycleComponent } from './reciclar/scan-recycle/scan.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
+//import QrScanner from 'qr-scanner'; 
 
 
 
@@ -40,6 +43,8 @@ import { ScanRecycleComponent } from './reciclar/scan-recycle/scan.component';
     MatInputModule,
     MatIconModule,
     // CoreModule,
+    //QrScanner,
+    ZXingScannerModule,
     MatStepperModule,
     MatSidenavModule,
     MatButtonModule,

@@ -1,31 +1,54 @@
+<div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="row">
+            <mat-horizontal-stepper #stepper [selectedIndex]="0" completed="false">
+                <mat-step label="Introcción" [editable]="isEditable" completed="true">
+                </mat-step>
+                <mat-step label="Escaneo" [editable]="isEditable" completed="false">
+                </mat-step>
+                <mat-step label="Reciclado" [editable]="isEditable" completed="false" Opcional>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
 
-
-    <div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
-        <div fxLayout="column" fxLayoutAlign="center center">
-            <div  fxLayout="row" >
-                <mat-horizontal-stepper  #stepper [selectedIndex]="0" completed="false">
-                    <mat-step label="Introcción"  [editable]="isEditable"  completed="true" >
-                
-                    </mat-step>
-                    <mat-step label="Escaneo" [editable]="isEditable"  completed="false">
-                    </mat-step>
-                    <mat-step label="Reciclado" [editable]="isEditable"  completed="false" Opcional>
-                    </mat-step>
-                </mat-horizontal-stepper>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div class="container-intro" fxLayout="column" fxLayoutAlign="center center">
+            <p>Proceso de Escaneo</p>
+            <p>Para iniciar el proceso de reciclado debes permitir el acceso a la cámara de tu celular y escanear el
+                código del envase</p>
+            <img src="assets/img/istockphoto.png" alt="">
+            <div class="info-blue" fxLayoutAlign="center center">
+                <mat-icon fxFlex="10" fxLayoutAlign="center center" class="icon-info">info</mat-icon>
+                <p fxFlex>Recuerda que solo puedes registrar los envases que posean el código QR en su etiqueta</p>
             </div>
         </div>
-   
-          <div fxLayout="row"fxLayoutAlign="center center" > 
-              <div class="container-intro" fxLayout="column" >
-                <p>Proceso de Escaneo</p>
-                <p>Para iniciar el proceso de reciclado debes permitir el acceso a tu camara y escanear el codigo del envase.</p>
-              </div>
+  
 
-          </div>
-          <div fxLayout="row" class="spacing" fxLayoutAlign="center center">
-
-            <button mat-button  class="btn btn-primary" type="submit" fxFlex.xs="80" (click)="toScan()">
-              Comenzar
-            </button>
-          </div>
     </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+    <div class="container-intro" fxLayout="column" fxLayoutAlign="center center">
+        <p>Paso de confirmación</p>
+        <p>Al escanear el residuo se desplegara su información</p>
+        <img fxFlex="50" class="big" src="assets/img/modal.png" alt="">
+        <p>deberas seleccionar si realizaras la recolección al punto de acopio o lo almacenaras en tu contenedor</p>
+    <div fxLayout="row wrap">
+        <div>
+            <p>Mi Contenedor</p>
+            <img src="assets/img/container-info.png" alt="">
+        </div>
+      <div>
+          <p>Punto de reciclado</p>
+        <img src="assets/img/image-11.png" alt="">
+      </div>
+  
+    </div>
+    </div>
+</div>
+    <div fxLayout="row" class="spacing" fxLayoutAlign="center center">
+
+        <button mat-button class="btn btn-primary" type="submit" fxFlex.xs="80" (click)="toScan()">
+            Comenzar
+        </button>
+    </div>
+</div>
