@@ -1,0 +1,106 @@
+
+.green {
+  color: rgb(4, 196, 4);
+}
+
+.red {
+    color: #ec0000;
+    text-align: center;
+}
+
+.blue {
+    color: #1bb3bc;
+}
+
+.yellow {
+    color: #e59d27
+}
+
+.white {
+  color: #fff;
+}
+
+.margin-title {
+  margin: 2%;
+}
+
+.title {
+        em {
+            font-size: 45px;
+            margin: 12px;
+            text-align: center;
+        }
+        p{
+            color: #444444;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 0;
+            margin: 0 2%;
+        }
+}
+
+
+.scroll{
+    overflow: hidden;
+  }
+
+.mobile {
+    .title {
+        em {
+            font-size: 45px;
+            margin: 2px 12px;
+        }
+        p{
+          margin-left: 1px;
+          padding: 0 1px;
+        }
+    }
+}
+.body {
+    text-align: center;
+    p:nth-child(1) {
+        margin: 15px;
+        color: #444444;
+        font-size: 16px;
+        text-align: left
+    };
+    p:nth-child(2) {
+        font-size: 16px;
+        margin-top: 15px;
+        text-align: center
+    };
+}
+
+.mat-dialog-content{
+    border: 1px solid #cccccc;
+    overflow-y: hidden;
+}
+
+
+.mat-dialog-container{
+    padding: 0;
+}
+
+.size {
+  em{
+    font-size: 2px !important;
+  }
+
+}
+
+.mat-dialog-actions {
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .buton-center {
+      text-align: center;
+      width: 60%;
+      margin: 1.5px;
+  }
+
+  mat-dialog-title {
+    margin: 0;
+  }
+
+

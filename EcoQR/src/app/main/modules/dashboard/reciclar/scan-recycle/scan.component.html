@@ -30,7 +30,7 @@
        
           </div>
           <div fxLayout="row"fxLayoutAlign="center center">
-            <zxing-scanner *ngIf="scannerEnabled" #scanner (scanSuccess)="scanSuccessHandler($event)">
+            <zxing-scanner fxFlex="90" *ngIf="scannerEnabled" #scanner (scanSuccess)="scanSuccessHandler($event)">
             </zxing-scanner>
           </div>
     </div>

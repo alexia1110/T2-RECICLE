@@ -1,6 +1,6 @@
 <div class="grid" gdColumns="repeat(12, 1fr)" gdColumns.sm="repeat(8, 1fr)" gdColumns.xs="repeat(4, 1fr)"
     gdGap="0 1.6rem" ngClass.xs="mobile" ngClass.sm="tablet" ngClass.md="laptop" ngClass.gt-md="desktop">
-
+    <!-- <app-loading [loading]="loading"></app-loading>  -->
     <div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
         <div fxLayout="row" class="head-title" fxLayoutAlign="center center">
             <div class="title-welcome" fxLayout="column">
@@ -47,20 +47,22 @@
         </div>
         <div fxLayout="row" fxLayout.xs="column"   class="spacing"  fxLayoutAlign="space-around center" fxLayoutAlign.xs="center center" *ngIf="init">
 
-                <button  mat-button class="btn btn-primary" type="submit" fxFlex.xs="100" (click)="showLogin()">
+                <button  mat-button class="btn btn-primary" fxFlex.xs="100" (click)="showLogin()">
                     INGRESAR
                   </button>
-                  <button mat-button class="btn btn-secondary" type="submit" fxFlex.xs="100" (click)="goRegister()"  >
+                  <button mat-button class="btn btn-secondary"  fxFlex.xs="100" (click)="goRegister()"  >
                     REGISTRARSE
                   </button>
 
          
           </div>
-          <div fxLayout="row" fxLayout.xs="column"   class="spacing"  fxLayoutAlign="space-around center" fxLayoutAlign.xs="center center" *ngIf="!init">
-            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayout.xs="column"   class="spacing"  fxLayoutAlign="space-around center" fxLayoutAlign.xs="center center" *ngIf="!init" >
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="margin">
+              <form id="myForm" [formGroup]="formLoginQR" (ngSubmit)="submitForm()" fxLayout="row wrap" fxLayoutAlign="space-between center" >
                 <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
                   <mat-label>Usuario</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="user" />
+                  <mat-icon matSuffix (click)="showInfo()">info</mat-icon>
                   <!-- <em fxFlexOffset="5px" fxFlex="24" fxLayoutAlign="end center" class="icon-SYS004 blue"
                     (click)="showModalCI()"></em> -->
                   <mat-error>
@@ -69,17 +71,18 @@
                 </mat-form-field>
                 <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
                   <mat-label>Contraseña</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="pass" [type]="hide ? 'password' : 'text'"  />
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   <mat-error> Debes ingresar un celular válido </mat-error>
                 </mat-form-field>
-      
+              </form>
               </div>
 
               <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <button  mat-button class="btn btn-primary" type="submit" fxFlex.xs="100" fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px" (click)="goLogin()">
+                <button  mat-button class="btn btn-primary" type="submit" (click)="submitForm()" fxFlex.xs="100" fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px" [disabled]="!formLoginQR.valid">
                     ¡Reciclar!
                   </button>
-                  <button mat-button class="btn btn-secondary" type="submit" fxFlex.xs="100"  fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px" (click)="showinit()">
+                  <button mat-button class="btn btn-secondary"  fxFlex.xs="100"  fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px" (click)="showinit()">
                     Cancelar
                   </button>
       

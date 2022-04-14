@@ -1,0 +1,26 @@
+<div id="MODAL_MVP"  class="scroll" ngClass.xs="mobile" ngClass.sm="tablet" ngClass.md="laptop" ngClass.gt-md="desktop">
+
+  <div  mat-dialog-title fxLayout="row"  fxLayoutAlign="start  center" class="title">
+    <!-- <em  fxFlex="10" class="{{modalIcon}} {{colorIcon}}" ></em> -->
+ 
+      <mat-icon fxFlex="20"  fxLayoutAlign="center  center" class="{{colorIcon}}">{{modalIcon}}</mat-icon>
+      <p   fxLayoutAlign="start  center" fxFlex class="title">{{title}}</p>
+
+ 
+  </div>
+
+  <div mat-dialog-content fxLayout="column"  fxLayoutAlign="center  center" class="body">
+
+    <p >{{details}}</p>
+   
+
+  </div>
+
+  <div mat-dialog-actions fxLayoutAlign="center  center">
+    <div class="buton-center" fxLayout="row"  fxLayoutAlign="center  center">
+      <button mat-button class="btn btn-primary" (click)="clickClose()" type="submit" fxFlex="grow" >
+        {{button}}
+      </button>
+        </div>
+  </div>
+</div>

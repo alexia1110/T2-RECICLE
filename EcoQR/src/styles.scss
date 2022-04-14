@@ -265,7 +265,7 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
 }
 
 .mat-dialog-title {
-  margin: 0 !important;
+  margin: 4% !important;
 }
 
 .mat-select-panel {
@@ -354,7 +354,12 @@ background-color: #137e84;
 .mat-step-header .mat-step-icon-state-done{
   background-color: #137e84;
 }
+
+.mat-dialog-container {
+  background: #ffffff !important;
+}
 ::ng-deep {
+
 
 
   .mat-input-element {

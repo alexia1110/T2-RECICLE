@@ -1,0 +1,28 @@
+
+
+    <div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
+        <!-- <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="zoom">
+        </agm-map> -->
+        <div fxLayout="row" class="container">
+            <google-map 
+            width="100%"
+
+            [zoom]="zoom" 
+            (mapClick)="click($event)"
+            [center]="center"
+            [options]="options"
+            >
+            <map-marker
+            *ngFor="let marker of markers"
+            [position]="marker.position"
+            [label]="marker.label"
+            [title]="marker.title"
+            [options]="marker.options"
+          >  </map-marker>
+        </google-map>
+        </div>
+        <div  fxLayout="row wrap" fxLayoutAlign="space-between center" >
+            <button  mat-button  (click)="zoomIn()">Zoom in</button>
+            <button  mat-button  (click)="zoomOut()">Zoom out</button>
+        </div>
+    </div>

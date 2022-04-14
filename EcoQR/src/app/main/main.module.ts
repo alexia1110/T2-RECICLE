@@ -15,19 +15,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { ModalGenericModule } from './components/modals/modal-generic.module';
+import { LoadingComponent } from './components/loading/loading.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 // declare const propertiesGlobal: MainEnvironments;
 @NgModule({
   declarations: [
     initComponent,
-    OnboardingComponent
+    OnboardingComponent,
+    LoadingComponent
   ],
   imports: [
     FlexLayoutModule,
     CommonModule,
     MainRoutingModule,
     SwiperModule,
+    ModalGenericModule,
     // CoreModule,
     MatButtonModule,
     FormsModule,
@@ -38,7 +44,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
-    
+    MatIconModule,
+    MatProgressSpinnerModule,
     // MatTableModule,
     // MatButtonToggleModule,
     // MatRadioModule,

@@ -21,6 +21,11 @@ import { StepRecycleComponent } from './reciclar/step-recycle/stepRecycle.compon
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ScanRecycleComponent } from './reciclar/scan-recycle/scan.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { MapsComponent } from './reciclar/maps-recycle/maps.component';
+// import { AgmCoreModule } from '@agm/core';
+import { GoogleMapsModule } from '@angular/google-maps';
+
+// import { GoogleMapsModule } from '@angular/google-maps';
 
 //import QrScanner from 'qr-scanner'; 
 
@@ -32,7 +37,8 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     DashboardComponent,
     SidebarComponent,
     StepRecycleComponent,
-    ScanRecycleComponent
+    ScanRecycleComponent,
+    MapsComponent
 
   ],
   imports: [
@@ -55,7 +61,11 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyAAgo1POWsDP7NveCX56NS2LaIP1ZzuVUU'
+    // }),
+    GoogleMapsModule
     // MatTableModule,
     // MatButtonToggleModule,
     // MatRadioModule,
