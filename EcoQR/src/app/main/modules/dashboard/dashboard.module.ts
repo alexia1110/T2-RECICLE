@@ -24,6 +24,9 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { MapsComponent } from './reciclar/maps-recycle/maps.component';
 // import { AgmCoreModule } from '@agm/core';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { MainService } from '../../services/main.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ControlService } from '../../services/control.service';
 
 // import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -65,7 +68,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyAAgo1POWsDP7NveCX56NS2LaIP1ZzuVUU'
     // }),
-    GoogleMapsModule
+    
+    GoogleMapsModule,
     // MatTableModule,
     // MatButtonToggleModule,
     // MatRadioModule,
@@ -80,8 +84,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
    // MatSliderModule,
   //  MatSlideToggleModule,
     // MatExpansionModule,
- 
+    HttpClientModule,
     //MatSelectModule,
-  ]
+  ],
+  providers: [MainService, ControlService]
 })
 export class DashboardModule { }
