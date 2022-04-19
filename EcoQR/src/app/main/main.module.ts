@@ -17,8 +17,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { ModalGenericModule } from './components/modals/modal-generic.module';
-import { LoadingComponent } from './components/loading/loading.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 // declare const propertiesGlobal: MainEnvironments;
@@ -63,6 +63,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
  
     //MatSelectModule,
   ],
+  exports:[LoadingComponent],
   providers: [
    // MainService,
     TitleCasePipe,

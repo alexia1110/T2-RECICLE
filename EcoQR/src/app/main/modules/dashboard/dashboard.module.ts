@@ -27,6 +27,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MainService } from '../../services/main.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ControlService } from '../../services/control.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -41,7 +42,7 @@ import { ControlService } from '../../services/control.service';
     SidebarComponent,
     StepRecycleComponent,
     ScanRecycleComponent,
-    MapsComponent
+    MapsComponent,
 
   ],
   imports: [
@@ -65,6 +66,7 @@ import { ControlService } from '../../services/control.service';
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyAAgo1POWsDP7NveCX56NS2LaIP1ZzuVUU'
     // }),
@@ -87,6 +89,7 @@ import { ControlService } from '../../services/control.service';
     HttpClientModule,
     //MatSelectModule,
   ],
+  exports:[],
   providers: [MainService, ControlService]
 })
 export class DashboardModule { }

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { LoadingInfo } from './main/components/interfaces/loadingInfo';
+import { LoadScreenService } from './main/components/loading/load-screen.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EcoQR';
+  loadingStatus: Observable<LoadingInfo>;
+
+  constructor( private loadinSrv: LoadScreenService){
+    this.loadingStatus = this.loadinSrv.getHttpStatus();
+  }
 }

@@ -1,22 +1,25 @@
 <div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
     <!-- <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="zoom">
         </agm-map> -->
-    <div fxLayout="row" class="container">
+    <div fxLayout="row" class="container" *ngIf="showMaps">
         <google-map width="100%" [zoom]="zoom" (mapClick)="click($event)" [center]="center" [options]="options">
             <map-marker #markerElem="mapMarker" *ngFor="let marker of markers" [position]="marker.position"
                 [label]="marker.label" [title]="marker.title" [options]="marker.options"
                 (mapClick)="openInfo(markerElem, marker.info, marker.position)"> </map-marker>
             <map-info-window>
-                <div fxLayout="column" class="info-maker">
-                    <div class="title-info" fxLayout="row">
+                <div fxLayout="column" class="info-maker" fxLayoutAlign="start center">
+                    <div class="title-info" fxLayout="row" fxLayoutAlign="center center">
                         {{ infoContent.name }}
                     </div>
-                    <div fxLayout="column" *ngFor="let item of infoContent.materials; let i = index "
-                        class="info-material">
-                        <p fxFlex="100">{{item}}</p>
+                    <div class="container-colors" fxLayoutAlign="center center">
+                        <img src="assets/img/marker/recycling.png" alt="">
                     </div>
-                    <div fxFlex="100">
-                        <button mat-button class="btn btn-primary" (click)="jumpMap()">Ir</button>
+                    <div fxLayout="column" *ngFor="let item of infoContent.materials; let i = index "
+                        class="info-material" fxLayoutAlign="start center">
+                        <p fxLayoutAlign="start center" fxFlex="100">{{item}}</p>
+                    </div>
+                    <div fxFlex="100" fxLayoutAlign="center center" class="boton">
+                        <button mat-button class="btn btn-primary" fxFlex="60" (click)="jumpMap()">Ir</button>
                     </div>
                 </div>
 
@@ -24,8 +27,8 @@
             </map-info-window>
         </google-map>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <!-- <div fxLayout="row wrap" fxLayoutAlign="space-between center">
         <button mat-button (click)="zoomIn()">Zoom in</button>
         <button mat-button (click)="zoomOut()">Zoom out</button>
-    </div>
+    </div> -->
 </div>

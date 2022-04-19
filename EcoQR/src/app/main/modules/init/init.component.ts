@@ -17,7 +17,7 @@ export class initComponent implements AfterViewInit {
   public swiper: any;
   formLoginQR!: FormGroup;
   init = true;
-  public loading = false;
+ // public loading = false;
   @Output() elementSelected = new EventEmitter<any>();
   constructor(
     private fb: FormBuilder,
@@ -74,7 +74,7 @@ export class initComponent implements AfterViewInit {
   }
 
   goRegister(){
-    this.loading = true;
+   // this.loading = true;
     this.router.navigate(['/main/Onboarding']);
   }
 

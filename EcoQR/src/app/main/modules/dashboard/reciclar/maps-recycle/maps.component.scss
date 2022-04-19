@@ -9,21 +9,44 @@ google-map{
     margin: 2%;
 }
 
+.container-colors{
+    margin: 2px 0;
+    img{
+        width: 25%;
+    }
+}
+
 agm-map {
     height: 100%;
     width: 100%;
 }
+::ng-deep {
+.gm-style .gm-style-iw {
+    max-width: 280px !important;
+    padding: 0;
+}
+.gm-style .gm-style-iw-d{
+    width: 300px !important;
+}
+}
+
+.boton {
+    margin: 4px 0;
+    width: 100%;
+}
+
 
 .info-maker{
     width: 100% !important;
     height: 100% !important;
-    margin: 1px;
+    padding: 10px 0 0 0;
 }
 
 .title-info {
     font-size: 16px;
     color: #444;
     font-weight: bold;
+    margin: 5px 0;
 };
 
 .glas{

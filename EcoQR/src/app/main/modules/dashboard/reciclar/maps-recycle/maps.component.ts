@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
+import { BehaviorSubject } from 'rxjs';
+import { LoadingInfo } from 'src/app/main/components/interfaces/loadingInfo';
 import { MainService } from 'src/app/main/services/main.service';
 
 @Component({
@@ -20,6 +22,7 @@ export class MapsComponent implements OnInit, AfterViewInit {
   // lat = 51.678418;
   // lng = 7.809007;
   // zoom:number = 12;
+
   @ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow;
   infoContent: any = {
     name: '',
@@ -39,8 +42,13 @@ export class MapsComponent implements OnInit, AfterViewInit {
   myLatLng: any;
   markers: any[] = [];
   options: google.maps.MapOptions = {};
+  showMaps = false;
+  loadingStatus!: BehaviorSubject<LoadingInfo>;
   constructor(private mainSrv: MainService) {
-    this.getPosition();
+    this.loadingStatus = new BehaviorSubject<LoadingInfo>({ status: true });
+    this.loadingStatus.next({ status: true, titulo: 'Se está transfiriendo al destinatario.' });
+   // this.getPosition();
+  //  this.loadingStatus.next({ status: false });
   }
 
   ngOnInit() {
@@ -65,13 +73,13 @@ export class MapsComponent implements OnInit, AfterViewInit {
           };
           this.options = {
             center: this.myLatLng,
-            maxZoom: 17,
+            maxZoom: 16,
             minZoom: 5,
           };
           this.getPuntoRecycle(this.latitude, this.longitude);
         }
       );
-
+      this.showMaps = true;
       return dato;
     } catch (e) {
       console.log(e);
@@ -95,31 +103,33 @@ export class MapsComponent implements OnInit, AfterViewInit {
   }
 
   addMarkerMe(lat: number, lbg: number) {
+
+
+    //const markerCustom ='{url:"/assets/img/marker/Street-View-48-96px/icons8-street-view-96.png"'
     this.markers.push({
       position: {
-        lat: -33.6014667,
-        lng: -70.550116,
+        lat: lat,
+        lng: lbg,
       },
       label: {
-        color: 'blue',
-        text: 'Me',
+        color: 'white',
+        text: 'Yo',
       },
-      icon: 'map-icon-female',
+     
+      /*{
+        url: ,
+        // scaledSize: new google.maps.Size(32, 40),
+        // origin: new google.maps.Point(0, 0), 
+        // anchor: new google.maps.Point(16, 40)
+      },*/
       // title: 'Marker title ' + (this.markers.length + 1),
-      options: { animation: google.maps.Animation.DROP },
+      options: { animation: google.maps.Animation.DROP,  icon: {
+         url:'assets/img/marker/icons8-street-view-48.png', anchor: {x: 20, y: 55} }},
     });
   }
 
   addMarketRecycle(marker: any) {
-    const svgMarker = {
-      path: 'M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z',
-      fillColor: 'blue',
-      fillOpacity: 0.6,
-      strokeWeight: 0,
-      rotation: 0,
-      scale: 2,
-      anchor: new google.maps.Point(15, 30),
-    };
+
     this.markers.push({
       position: {
         lat: Number(marker.lat),
@@ -127,8 +137,10 @@ export class MapsComponent implements OnInit, AfterViewInit {
       },
       options: {
         draggable: true,
+        icon: {
+          animation: google.maps.Animation.BOUNCE, 
+          url:'assets/img/marker/recycle-bin.png', anchor: {x: 10, y: 15} },
       },
-      icon: svgMarker,
       title: marker.manager,
       info: {
         name: marker.manager,
