@@ -38,7 +38,7 @@ const dato: QrData = parse2;
   console.log(    dato.material);
    
   const element = iconByCategorie(dato.material!);
-
+  dato.step = element?.step;
   dato.categorie = element?.categorie_name;
   dato.iconContaner = 'assets/img/' + element?.icon_recicle + '.png';
   dato.color = element?.color;
@@ -48,41 +48,36 @@ const dato: QrData = parse2;
   this.myTable.renderRows();   
 console.log(  this.myTable.dataSource);
 
-  
-   this.showContinueScan();
-//  this.scannerEnabled = true;
  }
 //window.location.href=$event;
- 
 
-    // const appointment = new Appointment($event);
-    // this.logService.logAppointment(appointment).subscribe(
-    //   (result: OperationResponse) => {
-    //     this.information = $event;
-    //     this.transports = result.object;
-    //     this.cd.markForCheck();
-    //   },
-    //   (error: any) => {
-    //     this.information = "Ha ocurrido un error por favor intentalo nuevamente ... ";
-    //     this.cd.markForCheck();
-    //   });
   }
   public enableScanner() {
     this.scannerEnabled = !this.scannerEnabled;
     this.information = "No se ha detectado información de ningún código. Acerque un código QR para escanear.";
   }
 
-  showContinueScan(){
+  continueScan(){
+    this.scannerEnabled = true;
+  }
+
+
+
+  showContinueNext(){
     const dialog =    this.matDialog.open(MODAL_TO_UP.MODAL_SCAN.typeModal, MODAL_TO_UP.MODAL_SCAN.configModal );
     dialog.afterClosed().subscribe(data => {
       console.log(data);
       if(data.event){
-        this.scannerEnabled = true;
-      }else {
         this.router.navigate(['/main/dashboard/init/maps']);
+      }else {
+        this.router.navigate(['/main/dashboard/init/container']);
       }
       // 
     });
+  }
+
+  gotoNext(){
+      this.showContinueNext();
   }
 
 

@@ -500,3 +500,22 @@ lib-step {
     margin: 10%;
   }
   
+
+  th.mat-header-cell{
+    text-align: center !important;
+    padding: 5px !important;
+    font-size: 14.5px;
+    font-weight: bold;
+    color: #444444;
+  }
+
+  td.mat-cell{
+    text-align: center !important;
+    padding: 4px !important;
+    font-size: 13px;
+  }
+
+  .mat-table{
+    background-color: rgba(141, 189, 189, 0.667);
+    //color: #003153;
+  }

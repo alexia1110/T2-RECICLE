@@ -35,7 +35,7 @@
           </div>
 
           <div  fxLayout="row" fxLayoutAlign="center center" >
-            <table #myTable  mat-table [dataSource]="dataSource" >
+            <table #myTable  mat-table [dataSource]="dataSource" class="std-table" >
              
                 
                   <!-- Name Column -->
@@ -76,4 +76,16 @@
                   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
           </div>
+          <div fxLayout="row" fxLayoutAlign="center center"  class="content-button">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+              <button  mat-button class="btn btn-primary" type="submit" (click)="continueScan()" fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+                  Scannear
+                </button>
+                <button mat-button class="btn btn-secondary"  fxFlex.xs="100"  fxFlex="48" fxLayoutGap="10px" (click)="showContinueNext()">
+                  Terminar
+                </button>
+    
+            </div>
+          </div>
+     
     </div>

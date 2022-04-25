@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ControlService } from '../../services/control.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table';
+import { ContenerComponent } from './contenedor/contener.component';
 
 // import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -44,6 +45,7 @@ import {MatTableModule} from '@angular/material/table';
     StepRecycleComponent,
     ScanRecycleComponent,
     MapsComponent,
+    ContenerComponent
 
   ],
   imports: [

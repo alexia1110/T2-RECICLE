@@ -14,8 +14,8 @@ export class ModalMVPComponent {
   colorIcon: string = '';
   title: string;
   details: string;
-  button = 'Aceptar';
-  button2 = 'Cancelar'
+  button = '';
+  button2 = '';
   botttonIcon: string = '';;
   bottonColor: string = '';;
   tipeButton: string;
@@ -35,6 +35,7 @@ export class ModalMVPComponent {
     this.title = data.modal.title;
     this.details = data.modal.details;
     this.button = data.modal.button;
+    this.button2 = data.modal.button2;
   
     this.setType();
     
@@ -54,6 +55,8 @@ export class ModalMVPComponent {
       case 'succes': {
         this.modalIcon = 'done';
         this.colorIcon = 'green';
+        this.button = '¡Reciclar!';
+        this.button2 = 'Almacenar'
 
         break;
       }

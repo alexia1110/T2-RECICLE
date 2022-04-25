@@ -43,10 +43,11 @@ MODAL_INFO: {
     configModal: {
       data: {
         modal:{
-        title: 'Lectura QR',
-        details: 'Continuaras seguir escaneando otros residuos?',
+        title: '¿Almacenas o reciclas?',
+        details: 'Selecciona si realizaras la recolección al punto de acopio o lo almacenaras en tu contenedor.',
         type: 'scan',
-        button: 'ACEPTAR'
+        button: '¡Reciclar!',
+        button2: 'Almacenar'
         }
       },
       autoFocus: false,

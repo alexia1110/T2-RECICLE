@@ -6,4 +6,5 @@ export interface QrData {
     iconContaner?:string;
     categorie?:string;
     color?: string;
+    step?: string;
   }
