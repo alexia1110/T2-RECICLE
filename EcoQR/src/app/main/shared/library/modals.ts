@@ -37,6 +37,24 @@ MODAL_INFO: {
       width: '640px',
       panelClass: 'MODAL_INFO'
     }
+  },
+  MODAL_SCAN:{
+    typeModal: ModalMVPComponent,
+    configModal: {
+      data: {
+        modal:{
+        title: 'Lectura QR',
+        details: 'Continuaras seguir escaneando otros residuos?',
+        type: 'scan',
+        button: 'ACEPTAR'
+        }
+      },
+      autoFocus: false,
+      maxWidth: '95vw',
+      maxHeight: 'auto',
+      width: '640px',
+      panelClass: 'MODAL_SCAN'
+    }
   }
 
 }

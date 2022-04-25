@@ -15,9 +15,11 @@ export class ModalMVPComponent {
   title: string;
   details: string;
   button = 'Aceptar';
+  button2 = 'Cancelar'
   botttonIcon: string = '';;
   bottonColor: string = '';;
   tipeButton: string;
+  cantButton: boolean = false;
   showCode: boolean = true;
 
   constructor(
@@ -42,6 +44,13 @@ export class ModalMVPComponent {
 
   setType() {
     switch (this.data.type) {
+      case 'scan': {
+        this.modalIcon = 'info';
+        this.colorIcon = 'blue';
+        this.cantButton = true;
+
+        break;
+      }
       case 'succes': {
         this.modalIcon = 'done';
         this.colorIcon = 'green';
@@ -86,5 +95,9 @@ export class ModalMVPComponent {
       this.dialogRef.close({ event: true });
     }
 
+  }
+
+  clickClose2(){
+    this.dialogRef.close({ event: false });
   }
 }

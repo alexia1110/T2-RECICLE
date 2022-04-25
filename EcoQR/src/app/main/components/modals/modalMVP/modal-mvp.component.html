@@ -16,10 +16,13 @@
 
   </div>
 
-  <div mat-dialog-actions fxLayoutAlign="center  center">
-    <div class="buton-center" fxLayout="row"  fxLayoutAlign="center  center">
+  <div mat-dialog-actions fxLayoutAlign="center  center"  fxLayout="row">
+    <div class="buton-center" fxLayout="column"  fxLayoutAlign="center  center" >
       <button mat-button class="btn btn-primary" (click)="clickClose()" type="submit" fxFlex="grow" >
         {{button}}
+      </button>
+      <button *ngIf="cantButton" mat-button class="btn btn-secondary" (click)="clickClose2()" type="submit" fxFlex="grow" >
+        {{button2}}
       </button>
         </div>
   </div>

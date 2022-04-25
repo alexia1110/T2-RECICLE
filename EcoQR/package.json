@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port 4200",
-    "build": "ng build",
+    "build": "ng build --prod --aot --vendor-chunk --common-chunk --delete-output-path --buildOptimizer  --base-href=\"/EcoQR/\"  --configuration=serve-dev ",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

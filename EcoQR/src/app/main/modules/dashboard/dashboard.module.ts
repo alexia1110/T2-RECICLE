@@ -28,6 +28,7 @@ import { MainService } from '../../services/main.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ControlService } from '../../services/control.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
 
 // import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -66,6 +67,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
+    MatTableModule,
     MatProgressSpinnerModule,
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyAAgo1POWsDP7NveCX56NS2LaIP1ZzuVUU'

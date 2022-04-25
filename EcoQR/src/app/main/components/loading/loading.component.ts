@@ -24,7 +24,7 @@ export class LoadingComponent implements OnInit{
   constructor(
 
   ) {
-
+    console.log('call loading');
 
   
   }
@@ -34,10 +34,10 @@ export class LoadingComponent implements OnInit{
       this.loading = info.status;
       this.titulo = '';
       this.detalle = '';
-
+      console.log(info);
       if (info.titulo) { this.titulo = info.titulo; }
       if (info.detalle) { this.detalle = info.detalle; }
-      console.log(info.titulo);
+  
     });
  }
 

@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { QrData } from 'src/app/main/components/interfaces/qrData';
+import { ContextService } from 'src/app/main/services/context.service';
+import { iconByCategorie } from 'src/app/main/shared/functions/utils';
+import { MODAL_TO_UP } from 'src/app/main/shared/library/modals';
 
 
 @Component({
@@ -14,16 +21,38 @@ export class ScanRecycleComponent implements OnInit {
    scannerEnabled: boolean = true;
   private transports: Transport[] = [];
   private information: string = "No se ha detectado información de ningún código. Acerque un código QR para escanear.";
-
-  constructor(private _formBuilder: FormBuilder) {}
-
+  @ViewChild(MatTable) myTable!: MatTable<any>;
+  constructor(   private matDialog: MatDialog,  protected router: Router, private contexto : ContextService) {}
+  displayedColumns: string[] = [ 'Nombre', 'Material', 'tipo', 'Contenedor', 'color'];
+  dataSource:any;
   ngOnInit() {
   }
   public scanSuccessHandler($event: any) {
     this.scannerEnabled = false;
     this.information = "Espera recuperando información... ";
-console.log($event);
-window.location.href=$event;
+
+const parse2 = JSON.parse($event);
+const dato: QrData = parse2;
+
+ if(dato){
+  console.log(    dato.material);
+   
+  const element = iconByCategorie(dato.material!);
+
+  dato.categorie = element?.categorie_name;
+  dato.iconContaner = 'assets/img/' + element?.icon_recicle + '.png';
+  dato.color = element?.color;
+
+  this.contexto.setContainerSave(dato);
+  this.myTable.dataSource = this.contexto.getContainerSave();
+  this.myTable.renderRows();   
+console.log(  this.myTable.dataSource);
+
+  
+   this.showContinueScan();
+//  this.scannerEnabled = true;
+ }
+//window.location.href=$event;
  
 
     // const appointment = new Appointment($event);
@@ -42,6 +71,20 @@ window.location.href=$event;
     this.scannerEnabled = !this.scannerEnabled;
     this.information = "No se ha detectado información de ningún código. Acerque un código QR para escanear.";
   }
+
+  showContinueScan(){
+    const dialog =    this.matDialog.open(MODAL_TO_UP.MODAL_SCAN.typeModal, MODAL_TO_UP.MODAL_SCAN.configModal );
+    dialog.afterClosed().subscribe(data => {
+      console.log(data);
+      if(data.event){
+        this.scannerEnabled = true;
+      }else {
+        this.router.navigate(['/main/dashboard/init/maps']);
+      }
+      // 
+    });
+  }
+
 
 }
 

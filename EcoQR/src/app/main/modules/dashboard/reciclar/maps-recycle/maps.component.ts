@@ -9,6 +9,9 @@ import {
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { BehaviorSubject } from 'rxjs';
 import { LoadingInfo } from 'src/app/main/components/interfaces/loadingInfo';
+import { QrData } from 'src/app/main/components/interfaces/qrData';
+import { LoadScreenService } from 'src/app/main/components/loading/load-screen.service';
+import { ContextService } from 'src/app/main/services/context.service';
 import { MainService } from 'src/app/main/services/main.service';
 
 @Component({
@@ -40,24 +43,32 @@ export class MapsComponent implements OnInit, AfterViewInit {
   latitude: any;
   longitude: any;
   myLatLng: any;
+  materialSearch:any[] = [];
   markers: any[] = [];
   options: google.maps.MapOptions = {};
   showMaps = false;
   loadingStatus!: BehaviorSubject<LoadingInfo>;
-  constructor(private mainSrv: MainService) {
-    this.loadingStatus = new BehaviorSubject<LoadingInfo>({ status: true });
-    this.loadingStatus.next({ status: true, titulo: 'Se está transfiriendo al destinatario.' });
+  constructor(private mainSrv: MainService,  private contexto : ContextService,  private loadinSrv: LoadScreenService) {
+    this.loadinSrv.setHttpStatus(true);
+   this.searchMaterial();
+    // this.loadingStatus = new BehaviorSubject<LoadingInfo>({ status: true });
+    // this.loadingStatus.next({ status: true, titulo: 'Se está transfiriendo al destinatario.' });
    // this.getPosition();
   //  this.loadingStatus.next({ status: false });
   }
 
   ngOnInit() {
-    this.getPosition();
+
+
+
+
+   
     // console.log(this.latitude);
   }
 
   ngAfterViewInit() {
     /// this.setCurrentLocation();
+    this.getPosition();
   }
 
   async getPosition(): Promise<any> {
@@ -80,7 +91,8 @@ export class MapsComponent implements OnInit, AfterViewInit {
         }
       );
       this.showMaps = true;
-      return dato;
+      this.loadinSrv.setHttpStatus(false);
+      return;
     } catch (e) {
       console.log(e);
     }
@@ -92,14 +104,68 @@ export class MapsComponent implements OnInit, AfterViewInit {
         .getPuntosRecycle(lat, long)
         .toPromise();
       console.log(this.puntoRecycle);
+
       for (let index = 0; index < this.puntoRecycle.length; index++) {
-        const element = this.puntoRecycle[index];
-        this.addMarketRecycle(element);
+         const elementAdd = this.puntoRecycle[index];
+        // this.addMarketRecycle(element);
+        console.log(this.puntoRecycle[index]);
+        console.log( this.materialSearch);
+        
+        
+    this.puntoRecycle[index].materials.filter( (element: any) => {
+          console.log(element);
+                  
+        this.materialSearch.forEach(element2 => {
+          console.log(element2[0]);
+          
+          if(element2[0] === element){
+            this.addMarketRecycle(elementAdd);
+          }
+        });
+        }
+          );
+
+     
+    // this.materialSearch.forEach(element =>{
+    //   console.log(element);
+    //   
+    //   array.forEach( mate => {
+    //     if(mate === element){
+    //       const element2 = this.puntoRecycle[index];
+    //       this.addMarketRecycle(element2);
+    //       return;
+    //     }else {
+    //       console.log('not');
+          
+    //     }
+    //   });
+ 
+    // });
+     
       }
       //this.addMarketRecycle(this.puntoRecycle[0]);
     } catch (error) {
       console.log(error);
     }
+  }
+
+  searchMaterial(): any{
+    this.contexto.getContainerSave().forEach(element => {
+      console.log(element.material);
+      if(this.materialSearch.length === 0){
+
+        this.materialSearch.push(element.material);
+      }else{
+      const dato =  this.materialSearch.find(x=> {
+    if(x !== element.material){
+      this.materialSearch.push(element.material);
+    }
+        
+      });
+     
+      }
+    
+    });
   }
 
   addMarkerMe(lat: number, lbg: number) {
