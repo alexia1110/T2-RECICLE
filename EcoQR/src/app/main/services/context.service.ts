@@ -15,4 +15,9 @@ import { QrData } from "../components/interfaces/qrData";
       getContainerSave(): QrData[] {
         return this.containerSave;
       }
+
+      updateContainerSave(qrD: QrData[]){
+        this.containerSave = qrD;
+
+      }
   }

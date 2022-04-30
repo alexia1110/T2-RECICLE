@@ -42,6 +42,7 @@ const dato: QrData = parse2;
   dato.categorie = element?.categorie_name;
   dato.iconContaner = 'assets/img/' + element?.icon_recicle + '.png';
   dato.color = element?.color;
+  dato.estado = true;
 
   this.contexto.setContainerSave(dato);
   this.myTable.dataSource = this.contexto.getContainerSave();

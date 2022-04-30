@@ -7,4 +7,5 @@ export interface QrData {
     categorie?:string;
     color?: string;
     step?: string;
+    estado?: boolean;
   }

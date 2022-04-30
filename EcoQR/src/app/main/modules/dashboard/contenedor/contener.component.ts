@@ -32,6 +32,8 @@ export class ContenerComponent implements OnInit, AfterContentInit {
   ngAfterContentInit(): void {
     //Called after ngOnInit when the component's or directive's content has been initialized.
     //Add 'implements AfterContentInit' to the class.
+    this.contexto.getContainerSave().filter(x=>
+    x.estado == true);
    this.dataSource = this.contexto.getContainerSave();
     
   }

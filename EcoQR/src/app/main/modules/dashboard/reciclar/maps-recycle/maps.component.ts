@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LoadingInfo } from 'src/app/main/components/interfaces/loadingInfo';
 import { QrData } from 'src/app/main/components/interfaces/qrData';
@@ -48,13 +49,9 @@ export class MapsComponent implements OnInit, AfterViewInit {
   options: google.maps.MapOptions = {};
   showMaps = false;
   loadingStatus!: BehaviorSubject<LoadingInfo>;
-  constructor(private mainSrv: MainService,  private contexto : ContextService,  private loadinSrv: LoadScreenService) {
+  constructor(private mainSrv: MainService,  private contexto : ContextService,  private loadinSrv: LoadScreenService, protected router: Router) {
     this.loadinSrv.setHttpStatus(true);
    this.searchMaterial();
-    // this.loadingStatus = new BehaviorSubject<LoadingInfo>({ status: true });
-    // this.loadingStatus.next({ status: true, titulo: 'Se está transfiriendo al destinatario.' });
-   // this.getPosition();
-  //  this.loadingStatus.next({ status: false });
   }
 
   ngOnInit() {
@@ -258,7 +255,19 @@ export class MapsComponent implements OnInit, AfterViewInit {
       ',' +
       this.longDes;
     console.log(link);
+    this.updateContext(this.contexto.getContainerSave());
+    this.router.navigate(['/main/dashboard/init']);
     window.open(link, '_blank');
+  
     //  window.location.href=link;
+  }
+
+  updateContext(array:QrData[]){
+    const updatedOSArray = array.map(p =>
+      p.estado === true
+        ? { ...p, estado: false}
+        : p
+    );
+    this.contexto.updateContainerSave(updatedOSArray);
   }
 }
