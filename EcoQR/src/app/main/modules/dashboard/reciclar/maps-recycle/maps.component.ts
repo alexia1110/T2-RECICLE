@@ -91,6 +91,7 @@ export class MapsComponent implements OnInit, AfterViewInit {
       this.loadinSrv.setHttpStatus(false);
       return;
     } catch (e) {
+      this.loadinSrv.setHttpStatus(false);
       console.log(e);
     }
   }
