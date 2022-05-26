@@ -3,14 +3,11 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
 import { ControlService } from "./control.service";
+import {Usuario} from "./../models/usuario.model";
 
 @Injectable({
   providedIn: 'root'
 })
-
-
-
-  
   export class MainService {
     JsonHeader = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -31,5 +28,19 @@ import { ControlService } from "./control.service";
        return this.http.get(uri,{ headers: this.JsonHeader }).pipe(map(($response: any) => {
         return this.controlService.controlPuntoRecycle($response, uri);
        }));
+      }
+
+      login(mail: string, pass: string){
+        console.log('enter');
+        
+        const uri = 'http://localhost:8080/usuario/login/'+mail +'&'+pass
+        return this.http.get(uri,{ headers: this.JsonHeader });
+      }
+
+
+      setNewUser(usuario: Usuario): Observable<any>{
+        const uri = 'http://localhost:8080/usuario/new_user';
+        return this.http.post(uri,usuario,{ headers: this.JsonHeader });
+
       }
   }

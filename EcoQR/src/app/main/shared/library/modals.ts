@@ -56,6 +56,25 @@ MODAL_INFO: {
       width: '640px',
       panelClass: 'MODAL_SCAN'
     }
+  },
+  MODAL_ERROR:{
+    typeModal: ModalMVPComponent,
+    configModal: {
+      data: {
+        modal:{
+        title: 'Error',
+        details: 'Ha ocurrido un error, por favor intentalo más tarde.',
+        type: 'error',
+        button: 'Aceptar',
+       // button2: 'Almacenar'
+        }
+      },
+      autoFocus: false,
+      maxWidth: '95vw',
+      maxHeight: 'auto',
+      width: '640px',
+      panelClass: 'MODAL_SCAN'
+    }
   }
 
 }

@@ -9,101 +9,118 @@
       <div class="card onboarding" fxLayout="column">
         <p class="subtitle"> ¡Cada vez más cerca de ser Parte de la comunidad EcoQR!
           Ayúdanos a conocerte un poco más</p>
-          <form id="myForm" [formGroup]="formRegister" (ngSubmit)="submitForm()" >
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>Nombres</mat-label>
-            <input matInput formControlName="name"/>
-            <!-- <em fxFlexOffset="5px" fxFlex="24" fxLayoutAlign="end center" class="icon-SYS004 blue"
+        <form id="myForm" [formGroup]="formRegister" (ngSubmit)="submitForm()">
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>Nombres</mat-label>
+              <input matInput formControlName="nombre" />
+              <!-- <em fxFlexOffset="5px" fxFlex="24" fxLayoutAlign="end center" class="icon-SYS004 blue"
               (click)="showModalCI()"></em> -->
-            <mat-error>
-              El campo se encuentra vacío
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>Primer Apellido</mat-label>
-            <input matInput formControlName="apellidoFirst" />
-            <mat-error> Debes ingresar un celular válido </mat-error>
-          </mat-form-field>
+              <mat-error>
+                El campo se encuentra vacío
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>Primer Apellido</mat-label>
+              <input matInput formControlName="apellidoFirst" />
+              <mat-error> Debes ingresar un celular válido </mat-error>
+            </mat-form-field>
 
-        </div>
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>Segundo Apellido</mat-label>
-            <input matInput formControlName="apellidoSecon"/>
-            <mat-error> Debes ingresar un celular válido </mat-error>
-          </mat-form-field>
-          <div fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px" class="margin">
-            <p  class="white-text" fxLayoutAlign="center center">Genero</p>
-            <mat-radio-group name="checkDP" fxFlex="grow" fxLayout="row wrap"   (change)="radioButton($event)" fxLayout.xs="row" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center center">
-            <mat-radio-button class="white-text" value="F" class="check" fxFlex.xs="40">Femenino</mat-radio-button>
-            <mat-radio-button class="white-text" value="M" class="check" fxFlex.xs="40">Masculino</mat-radio-button>
-            <mat-radio-button class="white-text" value="O" class="check" fxFlex.xs="20">Otro</mat-radio-button>
-          </mat-radio-group>
-          </div> 
-    
-          <!-- <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>Segundo Apellido</mat-label>
+              <input matInput formControlName="apellidoSecond" />
+              <mat-error> Debes ingresar un celular válido </mat-error>
+            </mat-form-field>
+            <div fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px" class="margin">
+              <p class="white-text" fxLayoutAlign="center center">Genero</p>
+              <mat-radio-group name="checkDP" fxFlex="grow" fxLayout="row wrap" (change)="radioButton($event)"
+                fxLayout.xs="row" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center center">
+                <mat-radio-button class="white-text" value="F" class="check" fxFlex.xs="40">Femenino</mat-radio-button>
+                <mat-radio-button class="white-text" value="M" class="check" fxFlex.xs="40">Masculino</mat-radio-button>
+                <mat-radio-button class="white-text" value="O" class="check" fxFlex.xs="20">Otro</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <!-- <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
             <mat-label>Genero</mat-label>
             <input matInput />
             <mat-error> Debes ingresar un celular válido </mat-error>
           </mat-form-field> -->
-        </div>
-        <p class="subtitle">Ahora necesitamos tú dirección</p>
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>Calle</mat-label>
-            <input matInput formControlName="calle"/>
-            <mat-error> Debes ingresar un celular válido </mat-error>
-          </mat-form-field>
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label >Número</mat-label>
-            <input formControlName="numeroCalle" matInput />
-            <mat-error> Debes ingresar un celular válido </mat-error>
-          </mat-form-field>
-        </div>
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>Región</mat-label>
-                  <mat-select formControlName="region" (ngModelChange)="getRegionPerson($event)">
-                    <mat-option *ngFor="let region of regions.regiones" [value]="region">
-                      {{region.region}}
-                    </mat-option>
-                  </mat-select>
-          </mat-form-field>
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>Comuna</mat-label>
-                  <mat-select formControlName="comuna" >
-                    <mat-option *ngFor="let comuna of communesPerson;" [value]="comuna">
-                      {{ comuna.nombreComuna }}</mat-option>
-                  </mat-select>
-          </mat-form-field>
-        </div>
-        <p class="subtitle">Crea una clave para tu inicio de sesión</p>
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>contraseña</mat-label>
-            <input matInput formControlName="pass"/>
-            <mat-error> Debes ingresar un celular válido </mat-error>
-          </mat-form-field>
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>Confirma contraseña</mat-label>
-            <input matInput formControlName="pass2"/>
-            <mat-error> correo no coincide </mat-error>
-          </mat-form-field>
-        </div>
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-          <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>Correo</mat-label>
-            <input matInput formControlName="correo"/>
-            <mat-error> Debes ingresar un correo </mat-error>
-          </mat-form-field> 
-        </div>
-      </form>
+          </div>
+          <p class="subtitle">Ahora necesitamos tú dirección</p>
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>Calle</mat-label>
+              <input matInput formControlName="calle" />
+              <mat-error> Debes ingresar un celular válido </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>Número</mat-label>
+              <input formControlName="numeroCalle" matInput />
+              <mat-error> Debes ingresar un celular válido </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>Región</mat-label>
+              <mat-select formControlName="id_region" (ngModelChange)="getRegionPerson($event)">
+                <mat-option *ngFor="let region of regions.regiones" [value]="region">
+                  {{region.region}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>Comuna</mat-label>
+              <mat-select formControlName="id_ciudad">
+                <mat-option *ngFor="let comuna of communesPerson;" [value]="comuna.idComuna">
+                  {{ comuna.nombreComuna }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <p class="subtitle">Crea una clave para tu inicio de sesión</p>
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>contraseña</mat-label>
+              <input matInput formControlName="pass" />
+              <mat-error> Debes ingresar un celular válido </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>Confirma contraseña</mat-label>
+              <input matInput formControlName="pass2" />
+              <mat-error> correo no coincide </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
+              <mat-label>Correo</mat-label>
+              <input matInput formControlName="mail" />
+              <mat-error> Debes ingresar un correo </mat-error>
+            </mat-form-field>
+          </div>
+        </form>
       </div>
+    </div>
+    <div fxLayout="row" class="spacing" fxLayoutAlign="start center">
+      <form id="myform" [formGroup]="formSimulation">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" class="cont-check">
+            <div fxFlex="100" fxFlex.xs="grow">
+              <mat-checkbox fxLayoutAlign="center center" fxFlex="100" fxFlex.xs="20" formControlName="termCondiciones"
+                value="true" class="margin-chk"></mat-checkbox>
+              <p fxFlex="80" fxFlex.xs="100"><strong>Acepto los terminos de que mis datos se utilizaran para generar
+                  estadisticas para visualisar mi huella medio-ambiental y mi porcentaje de reciclaje</strong></p>
+            </div>
+          </div>
+        </div>
+
+      </form>
     </div>
     <div fxLayout="row" class="spacing" fxLayoutAlign="center center">
 
-      <button mat-button class="btn btn-primary" type="submit" fxFlex.xs="80" (click)="submitForm()" [disabled]="!formRegister.valid">
+      <button mat-button class="btn btn-primary" type="submit" fxFlex.xs="80" (click)="submitForm()"
+        [disabled]="!formRegister.valid && !formSimulation.valid">
         INGRESAR
       </button>
     </div>

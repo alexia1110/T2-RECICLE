@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swiper from 'swiper';
+import { MainService } from '../../services/main.service';
 import { MODAL_TO_UP } from '../../shared/library/modals';
 import { listPatterns } from '../../shared/patterns/pattern.library';
 
@@ -23,6 +24,7 @@ export class initComponent implements AfterViewInit {
     private fb: FormBuilder,
     private matDialog: MatDialog,
     protected router: Router,
+    private mainSrv: MainService,
   ) {
     this.formLogin();
   }
@@ -30,7 +32,7 @@ export class initComponent implements AfterViewInit {
   formLogin(){
     this.formLoginQR = this.fb.group({
       user: ['', Validators.compose([Validators.required, Validators.minLength(9),  Validators.pattern(listPatterns.email)])],
-      pass: ['', Validators.compose([Validators.required, Validators.nullValidator, Validators.maxLength(12), Validators.minLength(8)])],
+      pass: ['', Validators.compose([Validators.required, Validators.nullValidator, Validators.maxLength(12), Validators.minLength(4)])],
     });
   };
 
@@ -79,7 +81,21 @@ export class initComponent implements AfterViewInit {
   }
 
   submitForm(){
-    this.router.navigate(['/main/dashboard/init']);
+    this.login();
+    //this.router.navigate(['/main/dashboard/init']);
+  }
+
+  async login(){
+    try {
+
+      const response = await this.mainSrv.login(this.formLoginQR.get('user')?.value, this.formLoginQR.get('pass')?.value)
+      this.router.navigate(['/main/dashboard/init']);
+    } catch (error) {
+      const dialog = this.matDialog.open(MODAL_TO_UP.MODAL_ERROR.typeModal, MODAL_TO_UP.MODAL_ERROR.configModal );
+      dialog.afterClosed().subscribe(data => {
+        this.router.navigate(['/main']);
+      });
+    }
   }
 
   showLogin(){

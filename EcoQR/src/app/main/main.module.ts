@@ -19,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ModalGenericModule } from './components/modals/modal-generic.module';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoadingComponent } from './components/loading/loading.component';
+import { MainService } from './services/main.service';
+import { ControlService } from './services/control.service';
 
 
 // declare const propertiesGlobal: MainEnvironments;
@@ -65,11 +67,11 @@ import { LoadingComponent } from './components/loading/loading.component';
   ],
   exports:[LoadingComponent],
   providers: [
-   // MainService,
+   MainService,
     TitleCasePipe,
     //DeviceDetectorService,
    // ModalsService,
-  //  ControlService
+  ControlService
   ]
 })
 export class MainModule { }

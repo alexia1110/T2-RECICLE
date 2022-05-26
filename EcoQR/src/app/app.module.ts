@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MainModule } from './main/main.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MainModule } from './main/main.module';
     MatButtonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MainModule
     
   ],

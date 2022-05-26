@@ -10,4 +10,6 @@ export class ControlService {
       controlPuntoRecycle($response: any, url: string): any{
         return $response;
       }
+
+  
   }
