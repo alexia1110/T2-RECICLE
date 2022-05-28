@@ -73,7 +73,7 @@ MODAL_INFO: {
       maxWidth: '95vw',
       maxHeight: 'auto',
       width: '640px',
-      panelClass: 'MODAL_SCAN'
+      panelClass: 'MODAL_Error'
     }
   }
 

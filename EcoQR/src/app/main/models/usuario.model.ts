@@ -1,4 +1,5 @@
 export class Usuario{
+    public id?: any;
     public name: string = '';
     public apellidoFirst: string = '';
     public apellidoSecond: string = '';
@@ -11,7 +12,6 @@ export class Usuario{
     public pass: string = '';
     public estado: boolean = false;
 
-    constructor(){
-        
+    constructor(){     
     }
 }

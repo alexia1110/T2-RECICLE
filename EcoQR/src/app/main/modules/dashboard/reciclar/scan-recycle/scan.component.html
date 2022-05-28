@@ -34,17 +34,17 @@
             </zxing-scanner>
           </div>
 
-          <div  fxLayout="row" fxLayoutAlign="center center" >
+          <!-- <div  fxLayout="row" fxLayoutAlign="center center" >
             <table #myTable  mat-table [dataSource]="dataSource" class="std-table" >
              
                 
-                  <!-- Name Column -->
+              
                   <ng-container matColumnDef="Nombre">
                     <th mat-header-cell *matHeaderCellDef> Nombre </th>
                     <td mat-cell *matCellDef="let element"> {{element.nombreEmpresa}} </td>
                   </ng-container>
                 
-                  <!-- Weight Column -->
+           
                   <ng-container matColumnDef="Material">
                     <th mat-header-cell *matHeaderCellDef> Material </th>
                     <td mat-cell *matCellDef="let element">     <p>{{element.material[0]}} </p>                    
@@ -53,7 +53,7 @@
                     
                   </ng-container>
                 
-                  <!-- Symbol Column -->
+       
                   <ng-container matColumnDef="tipo">
                     <th mat-header-cell *matHeaderCellDef> Categoria Reciclaje </th>
                     <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
@@ -75,7 +75,7 @@
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-          </div>
+          </div> -->
           <div fxLayout="row" fxLayoutAlign="center center"  class="content-button">
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
               <button  mat-button class="btn btn-primary" type="submit" (click)="continueScan()" fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">

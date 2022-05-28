@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swiper from 'swiper';
+import { ContextService } from '../../services/context.service';
 import { MainService } from '../../services/main.service';
 import { MODAL_TO_UP } from '../../shared/library/modals';
 import { listPatterns } from '../../shared/patterns/pattern.library';
@@ -25,6 +26,7 @@ export class initComponent implements AfterViewInit {
     private matDialog: MatDialog,
     protected router: Router,
     private mainSrv: MainService,
+    private contxtSrv: ContextService
   ) {
     this.formLogin();
   }
@@ -86,12 +88,23 @@ export class initComponent implements AfterViewInit {
   }
 
   async login(){
-    try {
-
-      const response = await this.mainSrv.login(this.formLoginQR.get('user')?.value, this.formLoginQR.get('pass')?.value)
-      this.router.navigate(['/main/dashboard/init']);
+    try {     
+      
+      const response = await this.mainSrv.login(this.formLoginQR.get('user')?.value, this.formLoginQR.get('pass')?.value).toPromise();
+      this.contxtSrv.setUsuario(response);
+     this.router.navigate(['/main/dashboard/init']);
     } catch (error) {
-      const dialog = this.matDialog.open(MODAL_TO_UP.MODAL_ERROR.typeModal, MODAL_TO_UP.MODAL_ERROR.configModal );
+      let  configModal:any = {
+        data: {
+          modal:{
+          title: 'Error',
+          details: 'El usuario o la contraseña no son correctos',
+          type: 'error',
+          button: 'Aceptar',
+         // button2: 'Almacenar'
+          }
+        }};
+      const dialog = this.matDialog.open(MODAL_TO_UP.MODAL_ERROR.typeModal, configModal );
       dialog.afterClosed().subscribe(data => {
         this.router.navigate(['/main']);
       });

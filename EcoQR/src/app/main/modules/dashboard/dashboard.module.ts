@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -55,6 +55,7 @@ import { ContenerComponent } from './contenedor/contener.component';
     SwiperModule,
     MatInputModule,
     MatIconModule,
+    MatExpansionModule,
     // CoreModule,
     //QrScanner,
     ZXingScannerModule,

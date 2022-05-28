@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
 import { ControlService } from "./control.service";
 import {Usuario} from "./../models/usuario.model";
+import { Contenedor } from "../models/contenedor.model";
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +31,15 @@ import {Usuario} from "./../models/usuario.model";
        }));
       }
 
-      login(mail: string, pass: string){
+     public login(mail: string, pass: string): Observable<any>{
         console.log('enter');
         
-        const uri = 'http://localhost:8080/usuario/login/'+mail +'&'+pass
-        return this.http.get(uri,{ headers: this.JsonHeader });
+        const uri = 'http://localhost:8080/usuario/login/mail='+mail +'&pass='+pass;
+        console.log(uri);
+        
+        return this.http.get(uri, { headers: this.JsonHeader }).pipe(map(($response: any) => {       
+          return $response;
+        }));
       }
 
 
@@ -42,5 +47,17 @@ import {Usuario} from "./../models/usuario.model";
         const uri = 'http://localhost:8080/usuario/new_user';
         return this.http.post(uri,usuario,{ headers: this.JsonHeader });
 
+      }
+
+      getAllContenedores(id: any): Observable<any>{
+        const uri = 'http://localhost:8080/usuario/list_container/'+id;
+        return this.http.get(uri, { headers: this.JsonHeader }).pipe(map(($response: any) => {       
+          return $response;
+        }));
+      }
+
+      newContenedor(id: any, contenedor: Contenedor): Observable<any>{
+        const uri = 'http://localhost:8080/usuario/new_container/'+id;
+        return this.http.post(uri,contenedor,{ headers: this.JsonHeader });
       }
   }

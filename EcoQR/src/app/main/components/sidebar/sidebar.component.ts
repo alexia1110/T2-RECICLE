@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import Swiper from 'swiper';
+import { Usuario } from '../../models/usuario.model';
+import { ContextService } from '../../services/context.service';
 
 @Component({
   selector: 'sidebar',
@@ -12,14 +14,16 @@ export class SidebarComponent implements OnInit{
   optionsDropdownActive = false;
   showFiller = false;
   optionsInfoSession = false;
+  usuario!: Usuario;
   @Output() navClick = new EventEmitter();
   @Input() disableReconocimiento: boolean = false;
   @Input() active: string = '';
 
   constructor(
     protected router: Router,
+    private contxtSrv: ContextService
   ) {
-
+this.usuario = this.contxtSrv.getUsuario();
   
   }
 

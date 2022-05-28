@@ -6,7 +6,8 @@
     "start": "ng serve --host 0.0.0.0 --port 4200",
     "build": "ng build --prod --aot --vendor-chunk --common-chunk --delete-output-path --buildOptimizer  --base-href=\"/EcoQR/\"  --configuration=serve-dev ",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "sonar":"sonar-scanner"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,7 @@
     "@zxing/browser": "^0.1.1",
     "@zxing/library": "^0.19.1",
     "@zxing/ngx-scanner": "^3.5.0",
+    "karma-sonarqube-reporter": "^1.4.0",
     "qr-scanner": "^1.4.1",
     "rxjs": "~6.6.0",
     "swiper": "^8.1.0",
@@ -45,6 +47,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "sonar-scanner": "^3.1.0",
     "typescript": "~4.3.5"
   }
 }
