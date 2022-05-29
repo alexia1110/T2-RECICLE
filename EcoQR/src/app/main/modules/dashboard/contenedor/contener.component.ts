@@ -20,8 +20,11 @@ export class ContenerComponent implements OnInit, AfterContentInit {
 
   panelOpenState = false;
   @ViewChild(MatTable) myTable!: MatTable<any>;
-  constructor(   private matDialog: MatDialog,  protected router: Router, private contexto : ContextService,     private mainSrv: MainService) {
-  //  console.log(this.contexto.getContainerSave());
+  constructor(  private matDialog: MatDialog,  
+                protected router: Router, 
+                private contexto : ContextService,     
+                private mainSrv: MainService ) {
+
 
  
   }
@@ -33,19 +36,14 @@ export class ContenerComponent implements OnInit, AfterContentInit {
 
   async getContenedores(){
     try {
-      const response = await this.mainSrv.getAllContenedores(this.contexto.getUsuario().id!).toPromise();
-      console.log(response);
+      const response = await this.mainSrv.getContenedoresNoRecicle(this.contexto.getUsuario().id!).toPromise();
       this.contexto.setContenedores(response);
-      console.log(this.contexto.getContenedores());
       this.dataSource = this.contexto.getContenedores();
-      console.log(this.dataSource);
+
       
     } catch (error) {
-     // const dialog =
        this.matDialog.open(MODAL_TO_UP.MODAL_ERROR.typeModal, MODAL_TO_UP.MODAL_ERROR.configModal );
-      // dialog.afterClosed().subscribe(data => {
-      //   this.router.navigate(['/main']);
-      // });
+  
     }
   }
 
@@ -58,22 +56,6 @@ export class ContenerComponent implements OnInit, AfterContentInit {
     this.getContenedores();
     
   }
-
-
-
-
-  // showContinueNext(){
-  //   const dialog =    this.matDialog.open(MODAL_TO_UP.MODAL_SCAN.typeModal, MODAL_TO_UP.MODAL_SCAN.configModal );
-  //   dialog.afterClosed().subscribe(data => {
-  //     console.log(data);
-  //     if(data.event){
-  //       this.router.navigate(['/main/dashboard/init/maps']);
-  //     }else {
-  //       this.router.navigate(['/main/dashboard/init']);
-  //     }
-  //     // 
-  //   });
-  // }
 
   gotoNext(){
     this.router.navigate(['/main/dashboard/init/maps']);

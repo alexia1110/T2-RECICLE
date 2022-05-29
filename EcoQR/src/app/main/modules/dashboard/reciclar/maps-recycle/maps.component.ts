@@ -1,19 +1,15 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LoadingInfo } from 'src/app/main/components/interfaces/loadingInfo';
-import { QrData } from 'src/app/main/components/interfaces/qrData';
 import { LoadScreenService } from 'src/app/main/components/loading/load-screen.service';
+import { Contenedor } from 'src/app/main/models/contenedor.model';
 import { ContextService } from 'src/app/main/services/context.service';
 import { MainService } from 'src/app/main/services/main.service';
+import { MODAL_TO_UP } from 'src/app/main/shared/library/modals';
 
 @Component({
   selector: 'maps',
@@ -21,11 +17,6 @@ import { MainService } from 'src/app/main/services/main.service';
   styleUrls: ['./maps.component.scss'],
 })
 export class MapsComponent implements OnInit, AfterViewInit {
-  // googleMapType = 'map';
-  // title = 'My first AGM project';
-  // lat = 51.678418;
-  // lng = 7.809007;
-  // zoom:number = 12;
 
   @ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow;
   infoContent: any = {
@@ -36,6 +27,7 @@ export class MapsComponent implements OnInit, AfterViewInit {
   zoom = 12;
   puntoRecycle: any[] = [];
   latDes!: number;
+  link: string = '';
   longDes!: number;
   googleMapType = 'satellite';
   center!: google.maps.LatLngLiteral;
@@ -44,22 +36,23 @@ export class MapsComponent implements OnInit, AfterViewInit {
   latitude: any;
   longitude: any;
   myLatLng: any;
-  materialSearch:any[] = [];
+  materialSearch: any[] = [];
   markers: any[] = [];
   options: google.maps.MapOptions = {};
   showMaps = false;
   loadingStatus!: BehaviorSubject<LoadingInfo>;
-  constructor(private mainSrv: MainService,  private contexto : ContextService,  private loadinSrv: LoadScreenService, protected router: Router) {
-    this.loadinSrv.setHttpStatus(true);
-   this.searchMaterial();
+  constructor(
+    private mainSrv: MainService,
+    private contexto: ContextService,
+    private loadinSrv: LoadScreenService,
+    private matDialog: MatDialog,
+    protected router: Router
+  ) {
+    //  this.loadinSrv.setHttpStatus(true);
+    this.searchMaterial();
   }
 
   ngOnInit() {
-
-
-
-
-   
     // console.log(this.latitude);
   }
 
@@ -101,74 +94,49 @@ export class MapsComponent implements OnInit, AfterViewInit {
       this.puntoRecycle = await this.mainSrv
         .getPuntosRecycle(lat, long)
         .toPromise();
-      console.log(this.puntoRecycle);
+      // console.log(this.puntoRecycle);
 
       for (let index = 0; index < this.puntoRecycle.length; index++) {
-         const elementAdd = this.puntoRecycle[index];
+        const elementAdd = this.puntoRecycle[index];
         // this.addMarketRecycle(element);
         console.log(this.puntoRecycle[index]);
-        console.log( this.materialSearch);
-        
-        
-    this.puntoRecycle[index].materials.filter( (element: any) => {
-          console.log(element);
-                  
-        this.materialSearch.forEach(element2 => {
-          console.log(element2[0]);
-          
-          if(element2[0] === element){
-            this.addMarketRecycle(elementAdd);
-          }
-        });
-        }
-          );
+        console.log(this.materialSearch);
 
-     
-    // this.materialSearch.forEach(element =>{
-    //   console.log(element);
-    //   
-    //   array.forEach( mate => {
-    //     if(mate === element){
-    //       const element2 = this.puntoRecycle[index];
-    //       this.addMarketRecycle(element2);
-    //       return;
-    //     }else {
-    //       console.log('not');
-          
-    //     }
-    //   });
- 
-    // });
-     
+        this.puntoRecycle[index].materials.filter((element: any) => {
+          console.log(element);
+
+          this.materialSearch.forEach((element2) => {
+            console.log(element2[0]);
+
+            if (element2 === element) {
+              this.addMarketRecycle(elementAdd);
+            }
+          });
+        });
       }
-      //this.addMarketRecycle(this.puntoRecycle[0]);
     } catch (error) {
       console.log(error);
     }
   }
 
-  searchMaterial(): any{
-    this.contexto.getContainerSave().forEach(element => {
-      console.log(element.material);
-      if(this.materialSearch.length === 0){
-
-        this.materialSearch.push(element.material);
-      }else{
-      const dato =  this.materialSearch.find(x=> {
-    if(x !== element.material){
-      this.materialSearch.push(element.material);
-    }
-        
+  searchMaterial(): any {
+    this.contexto.getContenedores().forEach((element1) => {
+      console.log(element1.residuos);
+      element1.residuos.forEach((element: any) => {
+        if (this.materialSearch.length === 0) {
+          this.materialSearch.push(element.material);
+        } else {
+          const dato = this.materialSearch.find((x) => {
+            if (x !== element.material) {
+              this.materialSearch.push(element.material);
+            }
+          });
+        }
       });
-     
-      }
-    
     });
   }
 
   addMarkerMe(lat: number, lbg: number) {
-
-
     //const markerCustom ='{url:"/assets/img/marker/Street-View-48-96px/icons8-street-view-96.png"'
     this.markers.push({
       position: {
@@ -179,7 +147,7 @@ export class MapsComponent implements OnInit, AfterViewInit {
         color: 'white',
         text: 'Yo',
       },
-     
+
       /*{
         url: ,
         // scaledSize: new google.maps.Size(32, 40),
@@ -187,13 +155,17 @@ export class MapsComponent implements OnInit, AfterViewInit {
         // anchor: new google.maps.Point(16, 40)
       },*/
       // title: 'Marker title ' + (this.markers.length + 1),
-      options: { animation: google.maps.Animation.DROP,  icon: {
-         url:'assets/img/marker/icons8-street-view-48.png', anchor: {x: 20, y: 55} }},
+      options: {
+        animation: google.maps.Animation.DROP,
+        icon: {
+          url: 'assets/img/marker/icons8-street-view-48.png',
+          anchor: { x: 20, y: 55 },
+        },
+      },
     });
   }
 
   addMarketRecycle(marker: any) {
-
     this.markers.push({
       position: {
         lat: Number(marker.lat),
@@ -202,8 +174,10 @@ export class MapsComponent implements OnInit, AfterViewInit {
       options: {
         draggable: true,
         icon: {
-          animation: google.maps.Animation.BOUNCE, 
-          url:'assets/img/marker/recycle-bin.png', anchor: {x: 10, y: 15} },
+          animation: google.maps.Animation.BOUNCE,
+          url: 'assets/img/marker/recycle-bin.png',
+          anchor: { x: 10, y: 15 },
+        },
       },
       title: marker.manager,
       info: {
@@ -246,7 +220,7 @@ export class MapsComponent implements OnInit, AfterViewInit {
   }
 
   jumpMap() {
-    const link =
+    this.link =
       'http://maps.google.com/maps?saddr=' +
       this.latitude +
       ',' +
@@ -255,20 +229,36 @@ export class MapsComponent implements OnInit, AfterViewInit {
       this.latDes +
       ',' +
       this.longDes;
-    console.log(link);
-    this.updateContext(this.contexto.getContainerSave());
-    this.router.navigate(['/main/dashboard/init']);
-    window.open(link, '_blank');
-  
+    this.updateContext(this.contexto.getContenedores());
+    // this.updateContext(this.contexto.getContainerSave());
+
+
     //  window.location.href=link;
   }
 
-  updateContext(array:QrData[]){
-    const updatedOSArray = array.map(p =>
-      p.estado === true
-        ? { ...p, estado: false}
-        : p
-    );
-    this.contexto.updateContainerSave(updatedOSArray);
-  }
+async updateContenedores(id: any){
+  console.log(id);
+  
+    try {
+      const response = await this.mainSrv.updateContenedor(id).toPromise();
+      this.router.navigate(['/main/dashboard/init']);
+      window.open(this.link, '_blank');
+    } catch (error) {
+      const dialog = this.matDialog.open(MODAL_TO_UP.MODAL_ERROR.typeModal, MODAL_TO_UP.MODAL_ERROR.configModal );
+      dialog.afterClosed().subscribe(data => {
+        this.router.navigate(['/main']);
+      });
+    }
+}
+
+
+updateContext(contenedores: Contenedor[]){
+
+  contenedores.forEach(element=>{
+    this.updateContenedores(element.id);
+  })
+  
+
+ // this.updateContenedores(updatedOSArray);
+}
 }

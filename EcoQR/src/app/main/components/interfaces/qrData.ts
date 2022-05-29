@@ -1,11 +1,11 @@
 export interface QrData {
-    nombreEmpresa: string;
-    tipoReciclaje?: string;
-    reciclar?: boolean;
-    material?:string;
+    // nombreEmpresa: string;
+    // tipoReciclaje?: string;
+    // reciclar?: boolean;
+    // material?:string;
     iconContaner?:string;
-    categorie?:string;
+    // categorie?:string;
     color?: string;
     step?: string;
-    estado?: boolean;
+    // estado?: boolean;
   }
