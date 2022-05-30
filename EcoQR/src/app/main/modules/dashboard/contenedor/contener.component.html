@@ -19,13 +19,13 @@
       <table #myTable mat-table [dataSource]="dataSource" class="std-table">
 
 
-        <!-- Name Column -->
+
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> ID </th>
           <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
 
-        <!-- Weight Column -->
+
         <ng-container matColumnDef="date_creacion">
           <th mat-header-cell *matHeaderCellDef> Fecha Creación </th>
           <td mat-cell *matCellDef="let element">
@@ -35,19 +35,11 @@
 
         </ng-container>
 
-        <!-- Symbol Column -->
+
         <ng-container matColumnDef="date_reciclado">
           <th mat-header-cell *matHeaderCellDef> Fecha Reciclado </th>
           <td mat-cell *matCellDef="let element"> {{element.fechaReciclado}} </td>
         </ng-container>
-
-        <!-- <ng-container matColumnDef="Contenedor">
-                  <th mat-header-cell *matHeaderCellDef> Contenedor</th>
-                  <td mat-cell *matCellDef="let element"> 
-                   <img src="{{element.iconContaner}}" class="conten" alt="">
-                      
-                   </td>
-                </ng-container> -->
 
         <ng-container matColumnDef="estado">
           <th mat-header-cell *matHeaderCellDef> Estado</th>
@@ -64,35 +56,11 @@
                 <p>{{item.nombreEmpresa}}</p>
               </div>
 
-            </div>
-            <!-- <mat-accordion>
-                      <mat-expansion-panel (opened)="panelOpenState = true"
-                                           (closed)="panelOpenState = false">
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
-                    
-                          </mat-panel-title>
-                          <mat-panel-description>
-                         
-                          </mat-panel-description>
-                        </mat-expansion-panel-header>
-                       <div *ngFor="let item of element.residuos">
-                        <p>{{item.categoria}}</p>
-                        <p>{{item.material}}</p>
-                        <p>{{item.nombreEmpresa}}</p>
-                       </div>
-                      </mat-expansion-panel>
-                    </mat-accordion> -->
 
           </td>
 
         </ng-container>
-        <!-- 
 
-                <ng-container matColumnDef="step">
-                  <th mat-header-cell *matHeaderCellDef> Paso prep</th>
-                  <td mat-cell *matCellDef="let element"> {{element.step}} </td>
-                </ng-container> -->
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -104,9 +72,6 @@
           fxLayoutGap="10px" >
           ¡Reciclar!
         </button>
-        <!-- <button mat-button class="btn btn-secondary"  fxFlex.xs="100"  fxFlex="48" fxLayoutGap="10px" (click)="showContinueNext()">
-                Terminar
-              </button> -->
 
       </div>
     </div>

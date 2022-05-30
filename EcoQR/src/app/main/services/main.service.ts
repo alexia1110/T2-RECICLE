@@ -12,7 +12,7 @@ import { Contenedor } from "../models/contenedor.model";
   export class MainService {
     JsonHeader = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
     });

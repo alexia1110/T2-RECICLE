@@ -1,6 +1,5 @@
 <div class="grid" gdColumns="repeat(12, 1fr)" gdColumns.sm="repeat(8, 1fr)" gdColumns.xs="repeat(4, 1fr)"
     gdGap="0 1.6rem" ngClass.xs="mobile" ngClass.sm="tablet" ngClass.md="laptop" ngClass.gt-md="desktop">
-    <!-- <app-loading [loading]="loading"></app-loading>  -->
     <div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
         <div fxLayout="row" class="head-title" fxLayoutAlign="center center">
             <div class="title-welcome" fxLayout="column">
@@ -29,7 +28,7 @@
                             </div>
                             <div class="swiper-slide" fxLayout="row" fxLayout.xs="column">
                                 <div fxFlex="45" fxFlex.xs fxLayout="row" fxLayoutAlign="center center">
-                                    <!-- <img src="assets/img/lady.png" alt=""> -->
+                      
                                 </div>
                                 <div fxFlex="55" fxFlex.xs fxLayout="column" class="dialog">
                                     <p><strong>Slide2!</strong></p>
@@ -38,7 +37,7 @@
                             </div>
 
                         </div>
-                        <!-- Add Pagination -->
+            
                         <div class="swiper-pagination"></div>
                     </div>
 
@@ -63,8 +62,6 @@
                   <mat-label>Usuario</mat-label>
                   <input matInput formControlName="user" />
                   <mat-icon matSuffix (click)="showInfo()">info</mat-icon>
-                  <!-- <em fxFlexOffset="5px" fxFlex="24" fxLayoutAlign="end center" class="icon-SYS004 blue"
-                    (click)="showModalCI()"></em> -->
                   <mat-error>
                     El campo se encuentra vacío
                   </mat-error>
