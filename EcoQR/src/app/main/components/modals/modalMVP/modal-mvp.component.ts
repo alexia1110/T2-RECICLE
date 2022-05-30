@@ -28,9 +28,7 @@ export class ModalMVPComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private router: Router
   ) {
-
-    console.log(data.modal.title);
-    
+  
     this.data = data.modal;
     this.title = data.modal.title;
     this.details = data.modal.details;

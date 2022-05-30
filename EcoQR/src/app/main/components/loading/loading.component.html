@@ -1,18 +1,18 @@
+<div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
 <div id="loading" class="loading" *ngIf="loading" fxLayoutAlign="center center">
     <!-- <div class="contenedor"> -->
-
-        <mat-progress-spinner fxLayoutAlign="center center"
+      <div fxLayout="column" fxLayoutAlign="center center" >
+        <!-- <mat-progress-spinner fxLayoutAlign="center center"
         class="example-margin"
         [color]="color"
         [mode]="mode">
-    </mat-progress-spinner>
-
-      <div class="preloader">
-      </div>
-      <div class="loading-text">
-        <p class="loading-text_big">{{titulo}}</p>
-        <p>{{detalle}}</p>
+       </mat-progress-spinner> -->
+     <div class="loading-text" fxLayout="column">
+      <p class="loading-text_big" >{{titulo}}</p>
+        <p class="detalle">{{detalle}}</p>
     </div>
-    <!-- </div> -->
+    <div class="preloader" fxLayoutAlign="center center">
+    </div>
+    </div> 
   </div>
-  
+</div>

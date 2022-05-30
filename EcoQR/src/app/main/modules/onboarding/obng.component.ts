@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { LoadScreenService } from '../../components/loading/load-screen.service';
 import { regions } from '../../constant';
 import { Usuario } from '../../models/usuario.model';
 import { MainService } from '../../services/main.service';
@@ -23,8 +24,10 @@ export class OnboardingComponent {
     private fb: FormBuilder,
     private matDialog: MatDialog,
     private mainSrv: MainService,
+    private loadinSrv: LoadScreenService,
     protected router: Router,
   ) {
+    this.loadinSrv.setHttpStatus(false);
     this.formLogin();
     this.regions = regions;
   }
@@ -66,30 +69,19 @@ export class OnboardingComponent {
   }
 
 
-  getRegionPerson(region: any) {
-    console.log(region);
-    
+  getRegionPerson(region: any) {    
     this.communesPerson = region.comunas;
     this.regionSelect = region.id;
-    console.log(region.id);
-    
-    //this.formRegister.get('id_region')?.setValue(region.id);
     return region.region;
   }
-  radioButton(event: any) {
-    console.log(event.value);
-    
+  radioButton(event: any) {  
    this.formRegister.get('sexo')?.setValue(event.value);
-
-    //console.log(dato);
-    
-//guardar genero
   }
 
   submitForm(){
     this.formRegister.get('id_region')?.setValue(this.regionSelect);
-console.log(this.formRegister.value);
 const usuario: Usuario = this.formRegister.value;
+this.loadinSrv.setHttpStatus(true);
 this.newUser(usuario);
 
   }
@@ -99,6 +91,7 @@ async newUser(usuario: Usuario){
     const response = await this.mainSrv.setNewUser(usuario).toPromise();
    this.showSuccesRegister();
   } catch (error) {
+    this.loadinSrv.setHttpStatus(false);
     const dialog = this.matDialog.open(MODAL_TO_UP.MODAL_ERROR.typeModal, MODAL_TO_UP.MODAL_ERROR.configModal );
     dialog.afterClosed().subscribe(data => {
       this.router.navigate(['/main']);
@@ -107,7 +100,6 @@ async newUser(usuario: Usuario){
 }
 
   showSuccesRegister(){
-    console.log(MODAL_TO_UP.MODAL_SUCCES);
     const data_modal = MODAL_TO_UP.MODAL_SUCCES;
     data_modal.configModal.data.modal = {
       title: 'Registro Finalizado',
@@ -115,9 +107,14 @@ async newUser(usuario: Usuario){
       type: 'succes',
       button: 'ACEPTAR'
     };
+    this.loadinSrv.setHttpStatus(false);
     const dialog = this.matDialog.open(MODAL_TO_UP.MODAL_INFO.typeModal, data_modal.configModal );
     dialog.afterClosed().subscribe(data => {
       this.router.navigate(['/main/dashboard/init']);
     });
+  }
+
+  showinit(){
+    this.router.navigate(['/main']);
   }
 }

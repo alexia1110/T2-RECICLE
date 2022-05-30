@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swiper from 'swiper';
+import { LoadScreenService } from '../../components/loading/load-screen.service';
 import { ContextService } from '../../services/context.service';
 import { MainService } from '../../services/main.service';
 import { MODAL_TO_UP } from '../../shared/library/modals';
@@ -26,8 +27,10 @@ export class initComponent implements AfterViewInit {
     private matDialog: MatDialog,
     protected router: Router,
     private mainSrv: MainService,
+    private loadinSrv: LoadScreenService,
     private contxtSrv: ContextService
   ) {
+    this.loadinSrv.setHttpStatus(false);
     this.formLogin();
   }
 
@@ -68,30 +71,29 @@ export class initComponent implements AfterViewInit {
   }
 
   goNext() {
-    console.log('slide change');
     this.swiper.slideNext();
   }
 
   goPrev() {
-    console.log('slide prev');
     this.swiper.slidePrev();
   }
 
   goRegister(){
-   // this.loading = true;
     this.router.navigate(['/main/Onboarding']);
   }
 
   submitForm(){
+    this.loadinSrv.setHttpStatus(true);
     this.login();
     //this.router.navigate(['/main/dashboard/init']);
   }
 
   async login(){
     try {     
-      
+     
       const response = await this.mainSrv.login(this.formLoginQR.get('user')?.value, this.formLoginQR.get('pass')?.value).toPromise();
       this.contxtSrv.setUsuario(response);
+      this.loadinSrv.setHttpStatus(false);
      this.router.navigate(['/main/dashboard/init']);
     } catch (error) {
       let  configModal:any = {
@@ -104,6 +106,7 @@ export class initComponent implements AfterViewInit {
          // button2: 'Almacenar'
           }
         }};
+        this.loadinSrv.setHttpStatus(false);
       const dialog = this.matDialog.open(MODAL_TO_UP.MODAL_ERROR.typeModal, configModal );
       dialog.afterClosed().subscribe(data => {
         this.router.navigate(['/main']);

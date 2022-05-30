@@ -31,12 +31,8 @@ import { Contenedor } from "../models/contenedor.model";
        }));
       }
 
-     public login(mail: string, pass: string): Observable<any>{
-        console.log('enter');
-        
-        const uri = 'http://localhost:8080/usuario/login/mail='+mail +'&pass='+pass;
-        console.log(uri);
-        
+     public login(mail: string, pass: string): Observable<any>{      
+        const uri = 'http://localhost:8080/usuario/login/mail='+mail +'&pass='+pass;      
         return this.http.get(uri, { headers: this.JsonHeader }).pipe(map(($response: any) => {       
           return $response;
         }));

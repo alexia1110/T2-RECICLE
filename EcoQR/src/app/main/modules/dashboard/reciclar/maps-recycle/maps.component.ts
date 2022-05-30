@@ -48,7 +48,7 @@ export class MapsComponent implements OnInit, AfterViewInit {
     private matDialog: MatDialog,
     protected router: Router
   ) {
-    //  this.loadinSrv.setHttpStatus(true);
+    this.loadinSrv.setHttpStatus(true);
     this.searchMaterial();
   }
 
@@ -81,8 +81,8 @@ export class MapsComponent implements OnInit, AfterViewInit {
         }
       );
       this.showMaps = true;
-      this.loadinSrv.setHttpStatus(false);
-      return;
+ 
+      
     } catch (e) {
       this.loadinSrv.setHttpStatus(false);
       console.log(e);
@@ -94,20 +94,13 @@ export class MapsComponent implements OnInit, AfterViewInit {
       this.puntoRecycle = await this.mainSrv
         .getPuntosRecycle(lat, long)
         .toPromise();
-      // console.log(this.puntoRecycle);
+       this.loadinSrv.setHttpStatus(false);
+
 
       for (let index = 0; index < this.puntoRecycle.length; index++) {
         const elementAdd = this.puntoRecycle[index];
-        // this.addMarketRecycle(element);
-        console.log(this.puntoRecycle[index]);
-        console.log(this.materialSearch);
-
         this.puntoRecycle[index].materials.filter((element: any) => {
-          console.log(element);
-
           this.materialSearch.forEach((element2) => {
-            console.log(element2[0]);
-
             if (element2 === element) {
               this.addMarketRecycle(elementAdd);
             }
@@ -115,13 +108,13 @@ export class MapsComponent implements OnInit, AfterViewInit {
         });
       }
     } catch (error) {
+      this.loadinSrv.setHttpStatus(false);
       console.log(error);
     }
   }
 
   searchMaterial(): any {
     this.contexto.getContenedores().forEach((element1) => {
-      console.log(element1.residuos);
       element1.residuos.forEach((element: any) => {
         if (this.materialSearch.length === 0) {
           this.materialSearch.push(element.material);
@@ -137,7 +130,6 @@ export class MapsComponent implements OnInit, AfterViewInit {
   }
 
   addMarkerMe(lat: number, lbg: number) {
-    //const markerCustom ='{url:"/assets/img/marker/Street-View-48-96px/icons8-street-view-96.png"'
     this.markers.push({
       position: {
         lat: lat,
@@ -208,7 +200,6 @@ export class MapsComponent implements OnInit, AfterViewInit {
       name: content.name,
       materials: content.material,
     };
-    console.log(position);
     this.latDes = position.lat;
     this.longDes = position.lng;
 
@@ -237,13 +228,12 @@ export class MapsComponent implements OnInit, AfterViewInit {
   }
 
 async updateContenedores(id: any){
-  console.log(id);
-  
     try {
       const response = await this.mainSrv.updateContenedor(id).toPromise();
-      this.router.navigate(['/main/dashboard/init']);
-      window.open(this.link, '_blank');
+      console.log(response);
+      
     } catch (error) {
+      this.loadinSrv.setHttpStatus(false);
       const dialog = this.matDialog.open(MODAL_TO_UP.MODAL_ERROR.typeModal, MODAL_TO_UP.MODAL_ERROR.configModal );
       dialog.afterClosed().subscribe(data => {
         this.router.navigate(['/main']);
@@ -253,10 +243,14 @@ async updateContenedores(id: any){
 
 
 updateContext(contenedores: Contenedor[]){
-
+  this.loadinSrv.setHttpStatus(true);
   contenedores.forEach(element=>{
     this.updateContenedores(element.id);
-  })
+  });
+
+  this.router.navigate(['/main/dashboard/init']);
+  this.loadinSrv.setHttpStatus(false);
+  window.open(this.link, '_blank');
   
 
  // this.updateContenedores(updatedOSArray);

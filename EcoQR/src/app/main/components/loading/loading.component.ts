@@ -21,19 +21,14 @@ export class LoadingComponent implements OnInit{
 
 
  loading = true;
-  constructor(
-
-  ) {
-    console.log('call loading');
-
-  
-  }
+  constructor( ) { }
 
   ngOnInit () {
+    
     this.cambioEstado.subscribe((info: LoadingInfo) => {
       this.loading = info.status;
-      this.titulo = '';
-      this.detalle = '';
+      this.titulo = 'Estamos procesando tu información';
+      this.detalle = 'No recargues ni cierres la pagina mientras se realiza la solicitud';
       console.log(info);
       if (info.titulo) { this.titulo = info.titulo; }
       if (info.detalle) { this.detalle = info.detalle; }

@@ -1,43 +1,47 @@
+<div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
 
-
-    <div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
-     
-       <div fxLayout="column" fxLayoutAlign="center center" >
-        <div fxLayout="row" fxLayoutAlign="center center" > 
-          <div class="container-intro" fxLayout="column" >
-            <p>Mi Contenedor</p>
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="container-intro" fxLayout="column">
+        <p>Mi Contenedor</p>
       </div>
-        </div>
+    </div>
 
 
-     
+    <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100" *ngIf="!showContendores">
+      <div class="info-blue" fxLayoutAlign="center center">
+        <mat-icon fxFlex="10" fxLayoutAlign="center center" class="icon-info">info</mat-icon>
+        <p fxFlex> No tienes contenedores pendientes a reciclar</p>
+      </div>
+    </div>
 
-        <div  fxLayout="row" fxLayoutAlign="center center" fxFlex="100" >
-          <table #myTable  mat-table [dataSource]="dataSource" class="std-table" >
-           
-              
-                <!-- Name Column -->
-                <ng-container matColumnDef="id">
-                  <th mat-header-cell *matHeaderCellDef> ID </th>
-                  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-                </ng-container>
-              
-                <!-- Weight Column -->
-                <ng-container matColumnDef="date_creacion">
-                  <th mat-header-cell *matHeaderCellDef> Fecha Creación </th>
-                  <td mat-cell *matCellDef="let element">     <p>{{element.fechaCreacion}} </p>                    
-                     
-               </td>
-                  
-                </ng-container>
-              
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="date_reciclado">
-                  <th mat-header-cell *matHeaderCellDef> Fecha Reciclado </th>
-                  <td mat-cell *matCellDef="let element"> {{element.fechaReciclado}} </td>
-                </ng-container>
+    <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100" *ngIf="showContendores">
+      <table #myTable mat-table [dataSource]="dataSource" class="std-table">
 
-                <!-- <ng-container matColumnDef="Contenedor">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="date_creacion">
+          <th mat-header-cell *matHeaderCellDef> Fecha Creación </th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{element.fechaCreacion}} </p>
+
+          </td>
+
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="date_reciclado">
+          <th mat-header-cell *matHeaderCellDef> Fecha Reciclado </th>
+          <td mat-cell *matCellDef="let element"> {{element.fechaReciclado}} </td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="Contenedor">
                   <th mat-header-cell *matHeaderCellDef> Contenedor</th>
                   <td mat-cell *matCellDef="let element"> 
                    <img src="{{element.iconContaner}}" class="conten" alt="">
@@ -45,23 +49,23 @@
                    </td>
                 </ng-container> -->
 
-                <ng-container matColumnDef="estado">
-                  <th mat-header-cell *matHeaderCellDef> Estado</th>
-                  <td mat-cell *matCellDef="let element"> {{element.estadoReciclado}} </td>
-                </ng-container>
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef> Estado</th>
+          <td mat-cell *matCellDef="let element"> {{element.estadoReciclado}} </td>
+        </ng-container>
 
-                <ng-container matColumnDef="residuos">
-                  <th mat-header-cell *matHeaderCellDef> Resudos</th>
-                  <td mat-cell *matCellDef="let element" class="content-residuos"> 
-                    <div *ngFor="let item of element.residuos"   >
-                      <div>
-                        <p>{{item.categoria}}</p>
-                        <p>{{item.material}}</p>
-                        <p>{{item.nombreEmpresa}}</p>
-                      </div>
-                  
-                     </div>
-                    <!-- <mat-accordion>
+        <ng-container matColumnDef="residuos">
+          <th mat-header-cell *matHeaderCellDef> Resudos</th>
+          <td mat-cell *matCellDef="let element" class="content-residuos">
+            <div *ngFor="let item of element.residuos">
+              <div>
+                <p>{{item.categoria}}</p>
+                <p>{{item.material}}</p>
+                <p>{{item.nombreEmpresa}}</p>
+              </div>
+
+            </div>
+            <!-- <mat-accordion>
                       <mat-expansion-panel (opened)="panelOpenState = true"
                                            (closed)="panelOpenState = false">
                         <mat-expansion-panel-header>
@@ -79,33 +83,34 @@
                        </div>
                       </mat-expansion-panel>
                     </mat-accordion> -->
-                  
-                  </td>
-            
-                </ng-container>
-<!-- 
+
+          </td>
+
+        </ng-container>
+        <!-- 
 
                 <ng-container matColumnDef="step">
                   <th mat-header-cell *matHeaderCellDef> Paso prep</th>
                   <td mat-cell *matCellDef="let element"> {{element.step}} </td>
                 </ng-container> -->
-              
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="center center"  class="content-button">
-          <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-            <button  mat-button class="btn btn-primary" type="submit" (click)="gotoNext()" fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-                ¡Reciclar!
-              </button>
-              <!-- <button mat-button class="btn btn-secondary"  fxFlex.xs="100"  fxFlex="48" fxLayoutGap="10px" (click)="showContinueNext()">
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" class="content-button" *ngIf="showContendores">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <button mat-button class="btn btn-primary" type="submit" (click)="gotoNext()" fxFlex.xs="100" fxFlex="48"
+          fxLayoutGap="10px" >
+          ¡Reciclar!
+        </button>
+        <!-- <button mat-button class="btn btn-secondary"  fxFlex.xs="100"  fxFlex="48" fxLayoutGap="10px" (click)="showContinueNext()">
                 Terminar
               </button> -->
-  
-          </div>
-        </div>
-       </div>
 
-     
+      </div>
     </div>
+  </div>
+
+
+</div>

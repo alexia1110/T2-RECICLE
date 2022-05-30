@@ -14,8 +14,6 @@
             <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
               <mat-label>Nombres</mat-label>
               <input matInput formControlName="nombre" />
-              <!-- <em fxFlexOffset="5px" fxFlex="24" fxLayoutAlign="end center" class="icon-SYS004 blue"
-              (click)="showModalCI()"></em> -->
               <mat-error>
                 El campo se encuentra vacío
               </mat-error>
@@ -42,12 +40,6 @@
                 <mat-radio-button class="white-text" value="O" class="check" fxFlex.xs="20">Otro</mat-radio-button>
               </mat-radio-group>
             </div>
-
-            <!-- <mat-form-field fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px">
-            <mat-label>Genero</mat-label>
-            <input matInput />
-            <mat-error> Debes ingresar un celular válido </mat-error>
-          </mat-form-field> -->
           </div>
           <p class="subtitle">Ahora necesitamos tú dirección</p>
           <div fxLayout="row wrap" fxLayoutAlign="space-between center">
@@ -117,12 +109,16 @@
 
       </form>
     </div>
-    <div fxLayout="row" class="spacing" fxLayoutAlign="center center">
 
-      <button mat-button class="btn btn-primary" type="submit" fxFlex.xs="80" (click)="submitForm()"
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <button mat-button class="btn btn-primary" type="submit" fxFlex.xs="100" fxFlex="48"  fxLayoutGap="10px" (click)="submitForm()"
         [disabled]="!formRegister.valid && !formSimulation.valid">
         INGRESAR
       </button>
+        <button mat-button class="btn btn-secondary"  fxFlex.xs="100"  fxFlex.xs="100" fxFlex="48" fxLayoutGap="10px" (click)="showinit()">
+          Cancelar
+        </button>
+
     </div>
   </div>
 </div>
