@@ -47,7 +47,7 @@ MODAL_INFO: {
         details: 'Selecciona si realizaras la recolección al punto de acopio o lo almacenaras en tu contenedor.',
         type: 'scan',
         button: '¡Reciclar!',
-        button2: 'Almacenar'
+        // button2: 'Almacenar'
         }
       },
       autoFocus: false,

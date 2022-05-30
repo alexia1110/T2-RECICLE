@@ -82,18 +82,12 @@ export class ScanRecycleComponent implements OnInit {
     );
     dialog.afterClosed().subscribe((data) => {
       this.loadinSrv.setHttpStatus(true);
-      if (data.event) {
-        this.saveResiduos();
-        return this.router.navigate(['/main/dashboard/init/maps']);
-      } else {
-        this.saveResiduos();
-        return this.router.navigate(['/main/dashboard/init/container']);
-      }
+      return this.saveResiduos('/main/dashboard/init/container');
       //
     });
   }
 
-  async saveResiduos() {
+  async saveResiduos(route: string) {
     try {
       const contenedor: Contenedor = {
         estadoReciclado: false,
@@ -103,8 +97,10 @@ export class ScanRecycleComponent implements OnInit {
       const response = await this.mainSrv
         .newContenedor(this.contexto.getUsuario().id, contenedor)
         .toPromise();
+        
       this.contexto.setContenedores(response);
       this.loadinSrv.setHttpStatus(false);
+       this.router.navigate([route]);
     } catch (error) {
       this.loadinSrv.setHttpStatus(false);
       const dialog = this.matDialog.open(
@@ -112,7 +108,7 @@ export class ScanRecycleComponent implements OnInit {
         MODAL_TO_UP.MODAL_ERROR.configModal
       );
       dialog.afterClosed().subscribe((data) => {
-        this.router.navigate(['/main']);
+         this.router.navigate(['/main']);
       });
     }
   }

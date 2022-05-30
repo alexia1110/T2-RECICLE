@@ -114,6 +114,8 @@ export class MapsComponent implements OnInit, AfterViewInit {
   }
 
   searchMaterial(): any {
+    console.log( this.contexto.getContenedores());
+    
     this.contexto.getContenedores().forEach((element1) => {
       element1.residuos.forEach((element: any) => {
         if (this.materialSearch.length === 0) {
