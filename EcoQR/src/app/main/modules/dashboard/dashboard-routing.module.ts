@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContenerComponent } from './contenedor/contener.component';
 import { DashboardComponent } from './dashboard.component';
+import { EstadisticaComponent } from './estadisticas/estadistica.component';
 import { MapsComponent } from './reciclar/maps-recycle/maps.component';
 import { ScanRecycleComponent } from './reciclar/scan-recycle/scan.component';
 import { StepRecycleComponent } from './reciclar/step-recycle/stepRecycle.component';
@@ -14,7 +15,9 @@ const routes: Routes = [
       { path: 'reciclar', component: StepRecycleComponent },
       { path: 'scan', component: ScanRecycleComponent },
       { path: 'maps', component: MapsComponent },
-      { path: 'container', component: ContenerComponent}
+      { path: 'container', component: ContenerComponent},
+      { path: 'estadisticas', component: EstadisticaComponent}
+
       // {path: 'face-autenticacion', component: LivenessTocComponent },
       // { path: 'ftu-pyme', component: FtuComponent },
       // { path: 'gif-pyme', component: GifComponent }

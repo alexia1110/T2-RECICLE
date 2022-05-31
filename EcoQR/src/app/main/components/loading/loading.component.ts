@@ -29,7 +29,6 @@ export class LoadingComponent implements OnInit{
       this.loading = info.status;
       this.titulo = 'Estamos procesando tu información';
       this.detalle = 'No recargues ni cierres la pagina mientras se realiza la solicitud';
-      console.log(info);
       if (info.titulo) { this.titulo = info.titulo; }
       if (info.detalle) { this.detalle = info.detalle; }
   

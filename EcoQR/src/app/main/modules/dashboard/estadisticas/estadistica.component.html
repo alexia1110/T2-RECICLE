@@ -1,0 +1,41 @@
+<div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
+
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="container-intro" fxLayout="column">
+        <p >Mis Estadisticas</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" *ngIf="datos.length > 0">
+      <div fxLayout="column">
+        <p class="white">Total Reciclado</p>
+        <div style="display: block;">
+          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [plugins]="barChartPlugins" [chartType]="barChartType">
+          </canvas>
+        </div>
+      </div>
+    
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <div fxLayout="column">
+        <p class="white">Total Contenedores</p>
+      <div class="chartjs-container">
+        <canvas 
+            baseChart 
+            [data]="pieChartData" 
+            [labels]="pieChartLabels" 
+            [chartType]="pieChartType"
+            [options]="pieChartOptions" 
+            [plugins]="pieChartPlugins" 
+            [colors]="pieChartColors" 
+            [legend]="pieChartLegend">
+        </canvas>
+    </div>
+  </div>
+    </div>
+
+  </div>
+
+</div>

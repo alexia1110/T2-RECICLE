@@ -59,6 +59,13 @@ import { Contenedor } from "../models/contenedor.model";
         }));
       }
 
+      getContenedoresSiRecicle(id: any): Observable<any>{
+        const uri = 'http://localhost:8080/usuario/list_container_reciclados/'+id;
+        return this.http.get(uri, { headers: this.JsonHeader }).pipe(map(($response: any) => {       
+          return $response;
+        }));
+      }
+
       newContenedor(id: any, contenedor: Contenedor): Observable<any>{
         const uri = 'http://localhost:8080/usuario/new_container/'+id;
         return this.http.post(uri,contenedor,{ headers: this.JsonHeader });
@@ -66,6 +73,13 @@ import { Contenedor } from "../models/contenedor.model";
 
       updateContenedor(id: any): Observable<any>{
         const uri = 'http://localhost:8080/usuario/recycle/'+id;
+        return this.http.get(uri, { headers: this.JsonHeader }).pipe(map(($response: any) => {       
+          return $response;
+        }));
+      }
+
+      findByCategoria(id: any, categoria: any): Observable<any>{
+        const uri = 'http://localhost:8080/usuario/findByCategoria/'+id+'&'+categoria;
         return this.http.get(uri, { headers: this.JsonHeader }).pipe(map(($response: any) => {       
           return $response;
         }));

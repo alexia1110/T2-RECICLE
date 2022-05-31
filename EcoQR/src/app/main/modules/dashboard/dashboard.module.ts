@@ -30,7 +30,8 @@ import { ControlService } from '../../services/control.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table';
 import { ContenerComponent } from './contenedor/contener.component';
-
+import { ChartsModule } from 'ng2-charts';
+import { EstadisticaComponent } from './estadisticas/estadistica.component';
 // import { GoogleMapsModule } from '@angular/google-maps';
 
 //import QrScanner from 'qr-scanner'; 
@@ -45,6 +46,7 @@ import { ContenerComponent } from './contenedor/contener.component';
     StepRecycleComponent,
     ScanRecycleComponent,
     MapsComponent,
+    EstadisticaComponent,
     ContenerComponent
 
   ],
@@ -72,6 +74,7 @@ import { ContenerComponent } from './contenedor/contener.component';
     MatSelectModule,
     MatTableModule,
     MatProgressSpinnerModule,
+    ChartsModule,
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyAAgo1POWsDP7NveCX56NS2LaIP1ZzuVUU'
     // }),

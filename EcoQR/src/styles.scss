@@ -515,3 +515,18 @@ lib-step {
     background-color: rgba(141, 189, 189, 0.667);
     //color: #003153;
   }
+
+  .container-intro {
+    margin: 10px;
+    text-align: center;
+    p:nth-child(1) {
+        color: #45B39D;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    p:nth-child(2) {
+        color: #45B39D;
+        font-size: 14px;
+    }
+}
