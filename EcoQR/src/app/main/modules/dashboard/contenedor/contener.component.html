@@ -14,9 +14,80 @@
         <p fxFlex> No tienes contenedores pendientes a reciclar</p>
       </div>
     </div>
+    <div *ngFor="let item of dataSource">
+    <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+      <mat-card class="contenedor-card">
+        <!-- <mat-card-header>
+     <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header> -->
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+        <mat-card-content >
 
-    <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100" *ngIf="showContendores">
-      <table #myTable mat-table [dataSource]="dataSource" class="std-table">
+          <table>
+            <thead>
+              <tr >
+                <th>estado</th>
+                <th>Fecha creacón</th>
+                <th>Fecha Reciclado</th>
+                <th>id</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{item.estadoReciclado}}</td>
+                <td >{{item.fechaCreacion}}</td>
+                <td>{{item.fechaReciclado}}</td>
+                <td>{{item.id}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div>
+            <p>Residuso</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Contendor</th>
+                  <th>Nombre Empresa</th>
+                  <th>Material</th>
+                  <th>Categoría</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let residuo of item.residuos">
+                  <tr >
+                    <td class="icon-container"><img  [src]="residuo.info.iconContaner" alt=""><br> <p>{{residuo.info.color}}</p></td>
+                    <td >{{residuo.nombreEmpresa}}</td>
+                    <td>{{residuo.material}}</td>
+                    <td>{{residuo.categoria}}</td>
+                  </tr>
+                  <tr >
+                    <td colspan="4">
+                      {{residuo.info.step}}
+                    </td>
+               
+                  </tr>
+                </ng-container>
+                
+              
+              
+              </tbody>
+            </table>
+          </div>
+  
+        </mat-card-content>
+
+        <!-- <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+      </mat-card>
+ 
+    </div>
+    <br>
+      <!-- <table #myTable mat-table [dataSource]="dataSource" class="std-table">
 
 
 
@@ -66,7 +137,9 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+      </table> -->
+
+
     </div>
     <div fxLayout="row" fxLayoutAlign="center center" class="content-button" *ngIf="showContendores">
       <div fxLayout="row wrap" fxLayoutAlign="space-between center">

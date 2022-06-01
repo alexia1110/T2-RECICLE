@@ -22,6 +22,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ScanRecycleComponent } from './reciclar/scan-recycle/scan.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { MapsComponent } from './reciclar/maps-recycle/maps.component';
+import {MatCardModule} from '@angular/material/card';
 // import { AgmCoreModule } from '@agm/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MainService } from '../../services/main.service';
@@ -58,6 +59,7 @@ import { EstadisticaComponent } from './estadisticas/estadistica.component';
     MatInputModule,
     MatIconModule,
     MatExpansionModule,
+    MatCardModule,
     // CoreModule,
     //QrScanner,
     ZXingScannerModule,

@@ -36,6 +36,8 @@ export class ContenerComponent implements OnInit, AfterContentInit {
   
   }
 
+
+
   async getContenedores(){
     try {
       const response = await this.mainSrv.getContenedoresNoRecicle(this.contexto.getUsuario().id!).toPromise();
@@ -44,8 +46,33 @@ export class ContenerComponent implements OnInit, AfterContentInit {
         this.showContendores = true;
       }
       this.dataSource = this.contexto.getContenedores();
+      this.dataSource.forEach((item: any) =>{
+
+      //  console.log(item.residuos);
+       item.residuos.forEach((element: any)=>{
+        const categoria = iconByCategorie( element.material);
+           const info: QrData = {
+          iconContaner: 'assets/img/' + categoria?.icon_recicle + '.png',
+          color: categoria?.color,
+          step: categoria?.step,
+        };
+        element.info = info;
+       });
+    //     for(let i = 0; i < item.residuos.length ; i++) {
+    //  const element = iconByCategorie( item.residuos[i].material);
+    //      const info: QrData = {
+    //       iconContaner: 'assets/img/' + element?.icon_recicle + '.png',
+    //       color: element?.color,
+    //       step: element?.step,
+    //     };
+    //      item.residuos[i].info = info;
+    //     }
+        
+    
+       });
       this.loadinSrv.setHttpStatus(false);
-      
+   console.log(   this.dataSource);
+   
     } catch (error) {
       this.loadinSrv.setHttpStatus(false);
        this.matDialog.open(MODAL_TO_UP.MODAL_ERROR.typeModal, MODAL_TO_UP.MODAL_ERROR.configModal );
