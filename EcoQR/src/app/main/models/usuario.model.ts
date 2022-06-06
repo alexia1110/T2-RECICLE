@@ -1,6 +1,6 @@
 export class Usuario{
     public id?: any;
-    public name: string = '';
+    public nombre: string = '';
     public apellidoFirst: string = '';
     public apellidoSecond: string = '';
     public sexo: string = '';

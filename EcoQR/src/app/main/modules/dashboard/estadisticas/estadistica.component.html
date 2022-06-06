@@ -1,40 +1,54 @@
 <div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
 
-  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100" >
     <div fxLayout="row" fxLayoutAlign="center center">
       <div class="container-intro" fxLayout="column">
-        <p >Mis Estadisticas</p>
+        <p>Mis Estadisticas</p>
       </div>
     </div>
-    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" *ngIf="datos.length > 0">
-      <div fxLayout="column">
-        <p class="white">Total Reciclado</p>
-        <div style="display: block;">
-          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-            [plugins]="barChartPlugins" [chartType]="barChartType">
-          </canvas>
-        </div>
+    <div  fxLayout="column" fxLayoutAlign="start center" id="pdfCanvas" #pdfCanvas>
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" *ngIf="datos.length > 0">
+        <mat-card class="contenedor-card">
+          <mat-card-content>
+            <div fxLayout="column">
+              <p class="white">Total Reciclado</p>
+              <div style="display: block;" fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                  [plugins]="barChartPlugins" [chartType]="barChartType">
+                </canvas>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+  
       </div>
-    
+  
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+        <mat-card class="contenedor-card">
+          <mat-card-content>
+            <div fxLayout="column">
+              <p class="white">Total Contenedores</p>
+              <div class="chartjs-container" fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                  [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                  [legend]="pieChartLegend">
+                </canvas>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
+  
 
-    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
-      <div fxLayout="column">
-        <p class="white">Total Contenedores</p>
-      <div class="chartjs-container">
-        <canvas 
-            baseChart 
-            [data]="pieChartData" 
-            [labels]="pieChartLabels" 
-            [chartType]="pieChartType"
-            [options]="pieChartOptions" 
-            [plugins]="pieChartPlugins" 
-            [colors]="pieChartColors" 
-            [legend]="pieChartLegend">
-        </canvas>
-    </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button class="btn btn-primary"fxFlex.xs="100" fxFlex="48"  fxLayoutGap="10px" (click)="downloadAsPDF()"
+     >
+      Descarga PDF
+    </button>
   </div>
-    </div>
+
+ 
 
   </div>
 

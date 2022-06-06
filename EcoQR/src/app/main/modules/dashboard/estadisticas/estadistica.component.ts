@@ -1,7 +1,9 @@
-import { AfterContentInit, Component } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { Label } from 'ng2-charts';
 import { LoadScreenService } from 'src/app/main/components/loading/load-screen.service';
 import { ContextService } from 'src/app/main/services/context.service';
@@ -19,7 +21,7 @@ export class EstadisticaComponent {
   //Add 'implements AfterContentInit' to the class.
   
   title = 'estadistica';
-
+  @ViewChild('pdfCanvas') pdfCanvas!: ElementRef;
 
   constructor(  
     private loadinSrv: LoadScreenService, 
@@ -35,7 +37,38 @@ export class EstadisticaComponent {
   datos: any[] =[];
     barChartOptions: ChartOptions = {
       responsive: true,
-      scales: { xAxes: [{}], yAxes: [{}] },
+      tooltips: {
+        enabled: true,
+        callbacks: {
+         label: function (tooltipItem: any, data: any) {
+          let label = data.labels[tooltipItem.index];
+          let count = data
+                      .datasets[tooltipItem.datasetIndex]
+                      .data[tooltipItem.index];
+          return "Cantidad: " + count;
+         },
+        },
+       },
+      plugins: {
+        datalabels: {
+         color: "white"
+        }
+      },
+      scales: { xAxes: [{
+        ticks: {
+          beginAtZero: true,
+          min: 0,
+          suggestedMin: 0
+        }
+        
+      }], yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          min: 0,
+          suggestedMin: 0
+        }
+      }] },
+
     };
     barChartLabels: any[] = ['plastic', 'paper', 'paperboard', 'cardboard_drink', 'glass', 'metal', 'phone'];
     barChartType: ChartType = 'bar';
@@ -43,7 +76,6 @@ export class EstadisticaComponent {
     barChartPlugins = [];
     numSec: any = [];
     barChartData: ChartDataSets[] = [];
-
     pieChartOptions: ChartOptions = {
       responsive: true,
       legend: {
@@ -51,12 +83,7 @@ export class EstadisticaComponent {
       },
       tooltips: {
         enabled: true,
-        mode: 'single',
-        callbacks: {
-          label: function (tooltipItems: any, data: any) {
-            return data.datasets[0].data[tooltipItems.index] + ' %';
-          }
-        }
+        mode: 'single'
       },
     };
     pieChartLabels: Label[] = ['Contenedor Reciclado', 'Contenedor no Reciclado'];
@@ -105,19 +132,20 @@ export class EstadisticaComponent {
  async  cargarCategorias (){
  
     for(let i = 0; i< this.barChartLabels.length; i++){
+      this.barChartData = [];
       await  this.getCategoria(this.barChartLabels[i]);
           
       if(this.barChartLabels[i] == 'phone'){
         console.log(this.numSec);
         
-        this.barChartData.push({ data: [this.numSec[0],this.numSec[1],this.numSec[2],this.numSec[3],this.numSec[4],this.numSec[5]],   backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 205, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(201, 203, 207, 0.2)'
+        this.barChartData.push({ label: ' Residuos Totales: ' + this.contexto.getUsuario().nombre  ,data: [this.numSec[0],this.numSec[1],this.numSec[2],this.numSec[3],this.numSec[4],this.numSec[5]],   backgroundColor: [
+          '#fffb68',
+          '#1751a7',
+          '#1751a7',
+          '#F5F5DC',
+          '#006f4c',
+          '#717977',
+          '#da4c56'
         ], })
       //  this.loadinSrv.setHttpStatus(false);
       }
@@ -150,7 +178,29 @@ export class EstadisticaComponent {
     
 }
 
-
+downloadAsPDF() {
+  var data = document.getElementById('pdfCanvas');  
+  // const divHeight = data.clientHeight
+  // const divWidth = data.clientWidth
+  // const ratio = divHeight / divWidth;
+  html2canvas(data!,
+    {
+      height: window.outerHeight + window.innerHeight,
+      width: window.outerWidth + window.innerWidth,
+      windowHeight: window.outerHeight + window.innerHeight,
+      windowWidth: window.outerWidth + window.innerWidth,
+      scrollX: 0,
+      scrollY: 0
+    }
+    ).then(canvas => {  
+    var pdf = new jsPDF(); 
+    var imgData = canvas.toDataURL('image/png');
+    var width = pdf.internal.pageSize.getWidth();
+    var height = pdf.internal.pageSize.getHeight();
+    pdf.addImage(imgData, 'PNG', 10, 10, width, height); 
+    pdf.save('canvas.pdf'); 
+  });  
+}
 
 
 }
