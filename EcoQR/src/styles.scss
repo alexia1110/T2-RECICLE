@@ -37,10 +37,7 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
 //   color: #cccccc !important;
 // }
 
-.leter {
-  font-size: 1.6rem !important;
-  font-family: 'Santander Micro Text';
-}
+
 
 .blue {
   font-size: 2.3rem;
@@ -156,21 +153,6 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
 }
 
 
-.datos-falt {
-  background-color: #DEEDF2;
-  p {
-    color: #6a6a6a;
-    font-family: "Santander Micro Text";
-    font-size: 1.6rem;
-    padding: 1rem;
-    padding-left: 0.5rem;
-  }
-  em {
-    font-size: 2.4rem;
-    color: #137e84;
-    text-align: center;
-  }
-}
 
 
 
@@ -219,17 +201,6 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
 .tablet {
   .head-title {
     font-size: 2.2rem;
-  }
-}
-
-.head-title-2 {
-  p {
-    font-size: 1.6rem !important;
-    margin: 1.0rem;
-    text-align: center;
-    font-weight: 600;
-    font-style: italic;
-    font-family: 'Santander Micro Text';
   }
 }
 
