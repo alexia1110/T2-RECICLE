@@ -5,6 +5,9 @@ export class Residuo {
     public nombreEmpresa: string = '';
     public material: string = '';
     public categoria: string = '';
+    public fechaElaboracion: string = '';
+    public fechaVencimiento: string = '';
+    public idSucursal: string = '';
     public info?: QrData;
 
     constructor(){     

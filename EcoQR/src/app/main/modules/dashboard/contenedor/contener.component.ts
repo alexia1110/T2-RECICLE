@@ -7,7 +7,7 @@ import { QrData } from 'src/app/main/components/interfaces/qrData';
 import { LoadScreenService } from 'src/app/main/components/loading/load-screen.service';
 import { ContextService } from 'src/app/main/services/context.service';
 import { MainService } from 'src/app/main/services/main.service';
-import { iconByCategorie } from 'src/app/main/shared/functions/utils';
+import { iconByCategorie, modalInfo } from 'src/app/main/shared/functions/utils';
 import { MODAL_TO_UP } from 'src/app/main/shared/library/modals';
 
 
@@ -126,6 +126,12 @@ export class ContenerComponent implements OnInit {
       this.showBoton = false;
       this.getContenedoresSiRecicle();
     }
+  }
+
+  showInfo(categoria: any){
+    console.log(categoria);
+    
+    modalInfo(this.matDialog, categoria);
   }
 
 }

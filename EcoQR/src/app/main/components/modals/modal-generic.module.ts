@@ -6,13 +6,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { ModalCIComponent } from './modalCI/modal-ci.component';
 
 import { ModalMVPComponent } from './modalMVP/modal-mvp.component';
 
 
 
 @NgModule({
-  declarations: [ModalMVPComponent],
+  declarations: [ModalMVPComponent, ModalCIComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -23,6 +24,6 @@ import { ModalMVPComponent } from './modalMVP/modal-mvp.component';
     MatInputModule,
     MatIconModule
   ],
-  entryComponents: [  ModalMVPComponent]
+  entryComponents: [  ModalMVPComponent, ModalCIComponent]
 })
 export class ModalGenericModule { }

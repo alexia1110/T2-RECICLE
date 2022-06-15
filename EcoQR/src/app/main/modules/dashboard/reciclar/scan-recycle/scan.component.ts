@@ -48,7 +48,10 @@ export class ScanRecycleComponent implements OnInit {
 
     const parse2 = JSON.parse($event);
     const dato: Residuo = parse2;
-
+    const [day, month, year] =   dato.fechaElaboracion.split('-');
+    dato.fechaElaboracion = [year, month, day].join('-');
+    const [day2, month2, year2] =   dato.fechaVencimiento.split('-');
+    dato.fechaVencimiento = [year2, month2, day2].join('-');
     if (dato) {
       const element = iconByCategorie(dato.material);
       const info: QrData = {

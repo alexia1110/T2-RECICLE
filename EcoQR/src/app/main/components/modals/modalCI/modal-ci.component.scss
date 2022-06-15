@@ -1,0 +1,103 @@
+
+
+.red {
+  color: #ec0000;
+  text-align: center;
+}
+
+.blue {
+  color: #1bb3bc;
+}
+
+.yellow {
+  color: #e59d27;
+}
+
+.title {
+  em {
+    font-size: 45px;
+    margin: 12px;
+  }
+  p {
+    color: #444444;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Santander Micro Text";
+    padding: 0;
+  }
+}
+
+.scroll {
+  overflow: hidden;
+}
+
+.mobile {
+  .title {
+    em {
+      font-size: 40px;
+      margin: 2px 5px;
+    }
+    p {
+      margin-left: 1rem;
+    }
+  }
+
+
+
+  .btn.btn-primary {
+    width: 100%;
+  }
+}
+
+.rigth{
+  text-align: left;
+}
+
+
+
+
+
+.mat-dialog-content {
+  padding: 0;
+  margin: 0;
+  overflow-y: hidden;
+}
+
+.mat-dialog-title {
+  border-bottom: 1px solid #cccccc;
+}
+
+.mat-dialog-actions {
+  margin-bottom: 0;
+  padding: 0;
+  border-top: 1px solid #cccccc;
+}
+
+.buton-center {
+  text-align: center;
+  width: 60%;
+  margin: 15px;
+}
+
+mat-dialog-title {
+  margin: 0;
+}
+
+
+.btn.btn-primary {
+  width: 80%;
+}
+
+::ng-deep{
+  .body2 {
+    text-align: center;
+    p {
+      color: #444444 !important;
+      font-size: 16px;
+      margin: 5px;
+    }
+    img {
+      width: 100% !important;
+    }
+  }
+}
