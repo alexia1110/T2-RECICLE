@@ -16,6 +16,7 @@ export function modalInfo(matdialog: MatDialog, categorie: string) {
     case 'plastic':
       data = {
         title: 'Pasos de preparación Plastico',
+        icon:'assets/img/recycle-yellow.png',
         body:
           '<div class="body2" fxLayout="column" fxLayoutAlign="center  center" fxFlex=100>' +
           '<img src="assets/img/clean-plastic.jpeg" alt="">' +
@@ -28,6 +29,7 @@ export function modalInfo(matdialog: MatDialog, categorie: string) {
     case 'glass':
       data = {
         title: 'Pasos de preparación Vidrio',
+        icon:'assets/img/recycle-green.png',
         body:
           '<div class="body2"  fxLayout="column" fxLayoutAlign="center  center" fxFlex=100 >' +
           '<p> Paso 1: Debes retirar las etiquetas del residuo</p>' +
@@ -41,6 +43,7 @@ export function modalInfo(matdialog: MatDialog, categorie: string) {
     case 'cardboard_drink':
       data = {
         title: 'Pasos de preparación TetraPack',
+        icon:'assets/img/recycle-red.png',
         body:
           '<div class="body2" fxLayout="column" fxLayoutAlign="center  center" fxFlex=100 >' +
           '<img src="assets/img/tetrapack.png" alt="">' +

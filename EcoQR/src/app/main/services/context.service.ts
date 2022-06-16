@@ -10,10 +10,20 @@ import { Usuario } from "../models/usuario.model";
     containerSave: QrData[]=[];
     usuario: Usuario = new Usuario;
     contenedores: any[] = [];
+    dash: boolean = true;
 
     setContainerSave(objet: QrData): void {
         this.containerSave.push(objet);
       }
+
+      setDash(dash: boolean ){
+        this.dash =dash;
+      }
+
+      getDash(){
+        return this.dash;
+      }
+
     
       getContainerSave(): QrData[] {
         return this.containerSave;

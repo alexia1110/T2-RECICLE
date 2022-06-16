@@ -281,9 +281,29 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
   padding: 0 !important;
 }
 
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:hover {
+  background: red !important; 
+}
+
+.mat-accordion {
+  width: 100% !important;
+  color: #003153;
+}
+
 .mat-expansion-panel-header {
-  height: 7.5rem !important;
-  padding: 0 15px !important;
+  height: 10px !important;
+  padding: 5px  !important;
+  margin: 5px !important;
+  font-size: 18px;
+}
+.mat-expansion-panel{
+  background-color: #FFFFFF;
+  color: #003153;
 }
 
 .mat-expansion-indicator::after {

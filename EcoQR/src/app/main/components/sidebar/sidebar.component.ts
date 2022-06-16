@@ -50,12 +50,14 @@ logOut(){
 }
 
 
-public setActive(item: string) {
-
+public setActive(item: string, active: string) {
+  console.log(active);
+  
   if (item !== this.active) {
     this.activeMenu = item;
     this.navClick.emit(item);
     this.optionsDropdownActive = false;
+
       this.router.navigate([item])
   }
 }

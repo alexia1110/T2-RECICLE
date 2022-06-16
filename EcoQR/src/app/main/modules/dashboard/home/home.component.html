@@ -1,0 +1,39 @@
+<div gdColumn="2/span 10" gdColumn.md="2/span 10" gdColumn.sm="1/span 8" gdColumn.xs="1/span 4">
+    <div  fxLayout="column"  fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <div class="container-intro" fxLayout="column">
+              <p>Comó reciclar en casa.</p>
+            </div>
+          </div>
+        <div class="iframe-wrapper" fxLayout="row">
+            <iframe width="556" height="510" src="https://www.youtube.com/embed/eJTUkVaYp54" title="#DíaMundialDelMedioAmbiente: ¿Cómo reciclar en casa en tiempos de COVID19?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <div class="container-intro" fxLayout="column">
+            <p>Datos curiosos:</p>
+          </div>
+        </div>
+        <div *ngFor="let item of dataSource" >
+      
+          <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100" >
+            <mat-accordion fxFlex="80" class="conten-accord">
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{item.titulo}}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p fxLayoutAlign="center center">  {{item.descripcion}}</p>
+              
+              </mat-expansion-panel>
+    
+            </mat-accordion>
+    
+          </div>
+          <br>
+        </div>
+    </div>
+    
+</div>

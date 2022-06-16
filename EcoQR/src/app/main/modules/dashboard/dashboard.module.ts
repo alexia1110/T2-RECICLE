@@ -34,8 +34,8 @@ import {MatTableModule} from '@angular/material/table';
 import { ContenerComponent } from './contenedor/contener.component';
 import { ChartsModule } from 'ng2-charts';
 import { EstadisticaComponent } from './estadisticas/estadistica.component';
+import { HomeComponent } from './home/home.component';
 // import { GoogleMapsModule } from '@angular/google-maps';
-
 //import QrScanner from 'qr-scanner'; 
 
 
@@ -49,7 +49,8 @@ import { EstadisticaComponent } from './estadisticas/estadistica.component';
     ScanRecycleComponent,
     MapsComponent,
     EstadisticaComponent,
-    ContenerComponent
+    ContenerComponent,
+    HomeComponent
 
   ],
   imports: [
@@ -96,7 +97,6 @@ import { EstadisticaComponent } from './estadisticas/estadistica.component';
     // MatSliderModule,
    // MatSliderModule,
   //  MatSlideToggleModule,
-    // MatExpansionModule,
     HttpClientModule,
     //MatSelectModule,
   ],

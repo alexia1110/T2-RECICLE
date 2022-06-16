@@ -4,7 +4,7 @@ export const CATEGORIES_RECYCLE = {
       step:'Limpiar superficie',
       categorie_name: 'vidrio',
       icon_recicle: 'recycle-green',
-      color: 'verde',
+      color: 'Verde',
       name: 'glass',
      
     },
@@ -12,14 +12,14 @@ export const CATEGORIES_RECYCLE = {
       step:'quitar etiquetas, lavar envase, secar',
       categorie_name: 'plástico',
       icon_recicle: 'recycle-yellow',
-      color: 'amarillo',
+      color: 'Amarillo',
       name: 'plastic',
     },
     {
       step:'N/A',
       categorie_name: 'papel',
       icon_recicle: 'recycle-blue',
-      color: 'azul',
+      color: 'Azul',
       name: 'paper',
     },
     {
@@ -32,15 +32,15 @@ export const CATEGORIES_RECYCLE = {
     {
       step:'Lavar envase, abrir extremos, aplanar',
       categorie_name: 'tetrapack',
-      icon_recicle: 'recycle-beige',
-      color: 'Beige',
+      icon_recicle: 'recycle-red',
+      color: 'Rojo',
       name: 'cardboard_drink',
     },
     {
       step:'N/A',
       categorie_name: 'telefono',
-      icon_recicle: 'recycle-red',
-      color: 'rojo',
+      icon_recicle: 'recycle-beige',
+      color: 'Beige',
       name: 'phone',
     },
     {

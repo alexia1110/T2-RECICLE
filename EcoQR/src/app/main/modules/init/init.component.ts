@@ -94,7 +94,7 @@ export class initComponent implements AfterViewInit {
       const response = await this.mainSrv.login(this.formLoginQR.get('user')?.value, this.formLoginQR.get('pass')?.value).toPromise();
       this.contxtSrv.setUsuario(response);
       this.loadinSrv.setHttpStatus(false);
-     this.router.navigate(['/main/dashboard/init']);
+     this.router.navigate(['/main/dashboard/init/home']);
     } catch (error) {
       let  configModal:any = {
         data: {

@@ -8,6 +8,7 @@ export class Residuo {
     public fechaElaboracion: string = '';
     public fechaVencimiento: string = '';
     public idSucursal: string = '';
+    public idEmpresa: string = '';
     public info?: QrData;
 
     constructor(){     

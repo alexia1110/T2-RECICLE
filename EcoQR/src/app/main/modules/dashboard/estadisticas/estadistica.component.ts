@@ -30,52 +30,40 @@ export class EstadisticaComponent {
     protected router: Router,
     private mainSrv: MainService ){
      this.loadinSrv.setHttpStatus(true);
-     this.cargarCategorias();
-     this.getNoContenedor();
+      this.getCategoria();
+   
+    //  this.getNoContenedor();
      this.loadinSrv.setHttpStatus(false);
     }
-  datos: any[] =[];
-    barChartOptions: ChartOptions = {
-      responsive: true,
-      tooltips: {
-        enabled: true,
-        callbacks: {
-         label: function (tooltipItem: any, data: any) {
-          let label = data.labels[tooltipItem.index];
-          let count = data
-                      .datasets[tooltipItem.datasetIndex]
-                      .data[tooltipItem.index];
-          return "Cantidad: " + count;
-         },
-        },
-       },
-      plugins: {
-        datalabels: {
-         color: "white"
-        }
-      },
-      scales: { xAxes: [{
-        ticks: {
-          beginAtZero: true,
-          min: 0,
-          suggestedMin: 0
-        }
-        
-      }], yAxes: [{
-        ticks: {
-          beginAtZero: true,
-          min: 0,
-          suggestedMin: 0
-        }
-      }] },
+  datos: number[] =[];
+  arrayData: any[] = [];
+  barChartOptions: ChartOptions = {
+    responsive: true,
+    scales: { xAxes: [{
+      ticks: {
+        beginAtZero: true,
+        min: 0,
+        suggestedMin: 0
+      }
+      
+    }], 
+    yAxes: [{
+      ticks: {
+        beginAtZero: true,
+        min: 0,
+        suggestedMin: 0
+      }
+    }] }
+  };
+  barChartLabels: Label[] = ['plastic', 'paper', 'paperboard', 'cardboard_drink', 'glass', 'metal', 'phone'];
+  barChartType: ChartType = 'bar';
+  barChartLegend = true;
+  barChartPlugins = [];
+  barChartData!: ChartDataSets[];
+  numSec: any = [];
 
-    };
-    barChartLabels: any[] = ['plastic', 'paper', 'paperboard', 'cardboard_drink', 'glass', 'metal', 'phone'];
-    barChartType: ChartType = 'bar';
-    barChartLegend = true;
-    barChartPlugins = [];
-    numSec: any = [];
-    barChartData: ChartDataSets[] = [];
+
+
     pieChartOptions: ChartOptions = {
       responsive: true,
       legend: {
@@ -86,7 +74,7 @@ export class EstadisticaComponent {
         mode: 'single'
       },
     };
-    pieChartLabels: Label[] = ['Contenedor Reciclado', 'Contenedor no Reciclado'];
+    pieChartLabels: Label[] = ['Contenedor no Reciclado', 'Contenedor Reciclado'];
     pieChartType: ChartType = 'pie';
 
     pieChartLegend = true;
@@ -99,21 +87,28 @@ export class EstadisticaComponent {
       },
     ];
     pieChartData: number[] = [];
-    
-    // public barChartData: ChartDataSets[] = [
-    //   { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    //   { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-    // ];
 
- async getCategoria(categoria: string) {
+
+ async getCategoria() {
    try {
-    const response = await this.mainSrv.findByCategoria(this.contexto.getUsuario().id, categoria).toPromise();
+    const response = await this.mainSrv.getAllResiduos(this.contexto.getUsuario().id).toPromise();
    
-    this.datos.push(response);
-    const num: number = response.length;
-    this.numSec.push(num);
+    this.barChartLabels.forEach( (item:any)=>{
+      console.log(item);
+      const num: number = Number(response.filter((s: any) => s.categoria === item).length);
+      this.datos.push(num);
+        });
+  
+       this.barChartData =  [{ label: ' Residuos Totales: ' + this.contexto.getUsuario().nombre  ,data:[this.datos[0],this.datos[1],this.datos[2],this.datos[3], this.datos[4], this.datos[5], this.datos[6]],   backgroundColor: [
+              '#fffb68',
+              '#1751a7',
+              '#1751a7',
+              '#F5F5DC',
+              '#006f4c',
+              '#717977',
+              '#da4c56'
+            ] }];
     return;
-   // this.cargarDatos(response,categoria);
  
    } catch (error) {
     this.loadinSrv.setHttpStatus(false);
@@ -128,34 +123,6 @@ export class EstadisticaComponent {
   }
 
 
-
- async  cargarCategorias (){
- 
-    for(let i = 0; i< this.barChartLabels.length; i++){
-      this.barChartData = [];
-      await  this.getCategoria(this.barChartLabels[i]);
-          
-      if(this.barChartLabels[i] == 'phone'){
-        console.log(this.numSec);
-        
-        this.barChartData.push({ label: ' Residuos Totales: ' + this.contexto.getUsuario().nombre  ,data: [this.numSec[0],this.numSec[1],this.numSec[2],this.numSec[3],this.numSec[4],this.numSec[5]],   backgroundColor: [
-          '#fffb68',
-          '#1751a7',
-          '#1751a7',
-          '#F5F5DC',
-          '#006f4c',
-          '#717977',
-          '#da4c56'
-        ], })
-      //  this.loadinSrv.setHttpStatus(false);
-      }
-    
-    }
- 
-
- 
-    
-  }
   
 
   async getNoContenedor(){

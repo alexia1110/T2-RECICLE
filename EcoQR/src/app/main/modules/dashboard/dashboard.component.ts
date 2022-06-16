@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ContextService } from '../../services/context.service';
 
 @Component({
   selector: 'dashboard-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   title = 'dashboard';
+
+  // safeSrc!: SafeResourceUrl;
+  constructor(  ){
+
+    // this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl("https://youtu.be/embede/JTUkVaYp54");
+  
+  }
+
 }

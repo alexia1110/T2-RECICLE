@@ -13,9 +13,16 @@
             <div fxLayout="column">
               <p class="white">Total Reciclado</p>
               <div style="display: block;" fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
-                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-                  [plugins]="barChartPlugins" [chartType]="barChartType">
+                <div class="chart-wrapper">
+                  <canvas baseChart 
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [plugins]="barChartPlugins"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType">
                 </canvas>
+              </div>
               </div>
             </div>
           </mat-card-content>

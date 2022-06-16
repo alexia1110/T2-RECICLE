@@ -84,4 +84,18 @@ import { Contenedor } from "../models/contenedor.model";
           return $response;
         }));
       }
+
+      getInfo(): Observable<any>{
+        const uri = 'http://localhost:8080/info/list_info/curiosidades';
+        return this.http.get(uri, { headers: this.JsonHeader }).pipe(map(($response: any) => {       
+          return $response;
+        }));
+      }
+
+      getAllResiduos(id: any): Observable<any>{
+        const uri = 'http://localhost:8080/usuario/getResiduos/'+id;
+        return this.http.get(uri, { headers: this.JsonHeader }).pipe(map(($response: any) => {       
+          return $response;
+        }));
+      }
   }

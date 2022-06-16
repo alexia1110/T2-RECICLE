@@ -9,17 +9,22 @@
 </div>
 <div *ngIf="optionsDropdownActive">
     <nav class="meritoNav" fxLayout="column" fxLayoutAlign="center center">
-        <a [ngClass]="active === 'container' ? 'selected' : ''" fxLayout="row" (click)="setActive('/main/dashboard/init/container')"
+        <a [ngClass]="active === 'dashboard' ? 'selected' : ''" fxLayout="row" (click)="setActive('/main/dashboard/init/home',  'home' )"
+        fxFlex.xs="grow" fxFlex="50" fxLayoutAlign="center center">
+        <mat-icon fxFlex="20" fxLayoutAlign="center center" class="icon-info">dashboard</mat-icon>
+        <p fxFlex="60">Home</p>
+    </a>
+        <a [ngClass]="active === 'container' ? 'selected' : ''" fxLayout="row" (click)="setActive('/main/dashboard/init/container',  'container' )"
             fxFlex.xs="grow" fxFlex="50" fxLayoutAlign="center center">
             <img fxFlex="25" src="assets/img/recycling_bin.png" alt="">
             <p fxFlex="60">Mi contenedor</p>
         </a>
-        <a [ngClass]="active === 'reciclar' ? 'selected' : ''" (click)="setActive('/main/dashboard/init/reciclar')"
+        <a [ngClass]="active === 'reciclar' ? 'selected' : ''" (click)="setActive('/main/dashboard/init/reciclar', 'reciclar' )"
             fxLayoutAlign="center center">
             <img fxFlex="25" src="assets/img/garbage_truck.png" alt="">
             <p fxFlex="60">Reciclar</p>
         </a>
-        <a [ngClass]="active === 'huella' ? 'selected' : ''" (click)="setActive('/main/dashboard/init/estadisticas')"
+        <a [ngClass]="active === 'huella' ? 'selected' : ''" (click)="setActive('/main/dashboard/init/estadisticas', 'huella')"
             fxLayoutAlign="center center">
             <img fxFlex="25" src="assets/img/carbon_foot.png" alt="">
             <p fxFlex="60">Mi Huella</p>

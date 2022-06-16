@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContenerComponent } from './contenedor/contener.component';
 import { DashboardComponent } from './dashboard.component';
 import { EstadisticaComponent } from './estadisticas/estadistica.component';
+import { HomeComponent } from './home/home.component';
 import { MapsComponent } from './reciclar/maps-recycle/maps.component';
 import { ScanRecycleComponent } from './reciclar/scan-recycle/scan.component';
 import { StepRecycleComponent } from './reciclar/step-recycle/stepRecycle.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
       { path: 'scan', component: ScanRecycleComponent },
       { path: 'maps', component: MapsComponent },
       { path: 'container', component: ContenerComponent},
-      { path: 'estadisticas', component: EstadisticaComponent}
+      { path: 'estadisticas', component: EstadisticaComponent},
+      { path:'home', component: HomeComponent}
 
       // {path: 'face-autenticacion', component: LivenessTocComponent },
       // { path: 'ftu-pyme', component: FtuComponent },
