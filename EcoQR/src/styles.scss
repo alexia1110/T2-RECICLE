@@ -285,10 +285,10 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
   margin-left: 8px;
 }
 
-.mat-expansion-panel-header.mat-expanded,
-.mat-expansion-panel-header.mat-expanded:hover {
-  background: red !important; 
-}
+// .mat-expansion-panel-header.mat-expanded,
+// .mat-expansion-panel-header.mat-expanded:hover {
+//   background: red !important; 
+// }
 
 .mat-accordion {
   width: 100% !important;
@@ -301,10 +301,10 @@ input:disabled, textarea:disabled, input:disabled::placeholder, textarea:disable
   margin: 5px !important;
   font-size: 18px;
 }
-.mat-expansion-panel{
-  background-color: #FFFFFF;
-  color: #003153;
-}
+// .mat-expansion-panel{
+//   background-color: #FFFFFF;
+//   color: #003153;
+// }
 
 .mat-expansion-indicator::after {
   color: #69f0ae !important;
@@ -521,3 +521,12 @@ lib-step {
         font-size: 14px;
     }
 }
+
+.goog-te-banner-frame {
+  display:none !important
+  }
+
+  .mat-typography{
+    margin: 0 !important;
+    top: 0 !important;
+  }

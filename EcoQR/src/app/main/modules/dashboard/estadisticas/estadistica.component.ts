@@ -32,7 +32,7 @@ export class EstadisticaComponent {
      this.loadinSrv.setHttpStatus(true);
       this.getCategoria();
    
-    //  this.getNoContenedor();
+     this.getNoContenedor();
      this.loadinSrv.setHttpStatus(false);
     }
   datos: number[] =[];
